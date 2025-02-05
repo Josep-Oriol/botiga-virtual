@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('stock_producto');
             $table->boolean('destacado_producto');
             $table->string('foto_portada_producto');
+            $table->timestamps();
 
 
             $table->foreign('fk_id_categoria')->references('id')->on('categorias')->onDelete('cascade');

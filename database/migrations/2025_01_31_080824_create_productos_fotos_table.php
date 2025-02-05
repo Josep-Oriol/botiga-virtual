@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url_foto');
             $table->text('descripcion_foto');
             $table->integer('orden_foto');
+            $table->timestamps();
 
             $table->foreign('fk_id_producto')->references('id')->on('productos')->onDelete('cascade');
         });

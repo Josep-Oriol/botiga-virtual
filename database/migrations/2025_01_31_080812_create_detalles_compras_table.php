@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('cantidad_detalles');
             $table->decimal('precio_detalles', 8, 2);
             $table->decimal('subtotal', 8, 2);
+            $table->timestamps();
 
         });
     }

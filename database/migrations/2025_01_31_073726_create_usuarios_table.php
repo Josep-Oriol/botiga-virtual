@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compradores', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('usuario_comprador', 255);
             $table->string('nombre_comprador', 255);
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('direccion_comprador', 255);
             $table->string('password_comprador', 255);
             $table->date('fecha_registro_comprador');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('compradores_');
+        Schema::dropIfExists('usuarios');
     }
 };

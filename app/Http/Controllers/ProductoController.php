@@ -28,7 +28,12 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Producto::create([
+            'nombre_producto' => $request('nombre_producto'),
+            'descripcion_producto' => $request('descripcion_producto'),
+            'codigo_producto' => $request('fk_id_categoria'),
+            'precio_producto' => $request('precio_producto'),
+        ]);
     }
 
     /**

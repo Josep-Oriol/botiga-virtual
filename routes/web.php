@@ -16,9 +16,8 @@ Route::resources([
     "categorias" => CategoriaController::class,
     "productos" => ProductoController::class,
     "usuarios" => UsuarioController::class,
-    "compras" => CompraController::class,
-    "login" => LoginController::class
+    "compras" => CompraController::class
 ]);
 
-Route::get('/login', [LoginController::class, 'Mostrarlogin'])->name('mostrarlogin');
-Route::get('/registro', [LoginController::class, 'Mostrarregistro'])->name('mostrarregistro');
+Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
+

@@ -9,6 +9,11 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function mostrarPanelAdmin(){
+        return view('admin/panelAdmin');
+    }
+
     public function login()
     {
         return view('main/login');

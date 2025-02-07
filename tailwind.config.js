@@ -5,6 +5,7 @@ export default {
     content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/categorias/*.blade.php",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/main/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -14,29 +15,28 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                body: ["Poppins", "sans-serif"],
             },
             colors: {
                 primary: {
-                    // Un color primario
                     50: "#eff6ff",
                     100: "#dbeafe",
                     200: "#bfdbfe",
                     300: "#93c5fd",
                     400: "#60a5fa",
-                    500: "#3b82f6", // Color primario principal
+                    500: "#3b82f6",
                     600: "#2563eb",
                     700: "#1d4ed8",
                     800: "#1e40af",
                     900: "#1e3a8a",
                 },
                 secondary: {
-                    // Un color secundario
                     50: "#fdf2f8",
                     100: "#fce7f3",
                     200: "#fbcfe8",
                     300: "#f9a8d4",
                     400: "#f472b6",
-                    500: "#ec4899", // Color secundario principal
+                    500: "#ec4899",
                     600: "#db2777",
                     700: "#be185d",
                     800: "#9d174d",
@@ -55,9 +55,13 @@ export default {
                     800: "#262626",
                     900: "#171717",
                 },
-            },
-            fontFamily: {
-                body: ["Poppins", "sans-serif"],
+                custom: {
+                    dark1: "#111827",
+                    dark2: "#18202F",
+                    dark3: "#1F2937",
+                    blue: "#3B82F6",
+                    light: "#D1D5DB",
+                },
             },
         },
     },

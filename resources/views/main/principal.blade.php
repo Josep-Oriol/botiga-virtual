@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC Markt</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
     <!-- Header -->
-    <header>
+    <header class="bg-gray-400">
         <div>
             <div class="logo">
                 <a href="/">&lt;PC MARKT/&gt;</a>

@@ -9,8 +9,11 @@ export function contenidoProductos() {
 
     const hProductos = document.createElement("h1");
     hProductos.textContent = "Productos";
+    hProductos.setAttribute("class", "p-5");
 
     const busqueda = document.createElement("input");
+    busqueda.setAttribute("placeholder", "Buscar...");
+    busqueda.setAttribute("class", "pl-2");
 
     const botonBuscar = document.createElement("button");
     botonBuscar.textContent = "Buscar";

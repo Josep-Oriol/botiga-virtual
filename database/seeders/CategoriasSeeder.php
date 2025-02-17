@@ -15,10 +15,36 @@ class CategoriasSeeder extends Seeder
     public function run(): void
     {
         DB::table('categorias')->insert([
-            'nombre_categoria' => 'categoria 1',
-            'codigo_categoria' => '123asd',
-            'created_at' => now(),
-            'updated_at' => now(),
+            [
+                'nombre_categoria' => 'Procesadores',
+                'codigo_categoria' => 'CPU001',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre_categoria' => 'Tarjetas Gráficas',
+                'codigo_categoria' => 'GPU002',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre_categoria' => 'Memorias RAM',
+                'codigo_categoria' => 'RAM003',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre_categoria' => 'Almacenamiento SSD',
+                'codigo_categoria' => 'SSD004',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre_categoria' => 'Placas Base',
+                'codigo_categoria' => 'MB005',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         ]);
     }
 }

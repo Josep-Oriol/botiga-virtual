@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_producto');
             $table->text('descripcion_producto')->nullable();
+            $table->text('descripcion_producto')->nullable();
             $table->string('codigo_producto');
+            $table->unsignedBigInteger('fk_id_categoria')->nullable();
             $table->unsignedBigInteger('fk_id_categoria')->nullable();
             $table->decimal('precio_producto', 8, 2);
             $table->bigInteger('stock_producto');

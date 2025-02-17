@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('fk_id_producto');
             $table->string('url_foto');
-            $table->text('descripcion_foto');
-            $table->integer('orden_foto');
+            $table->text('descripcion_foto')->nullable();
+            $table->boolean('destacada_foto');
             $table->timestamps();
 
             $table->foreign('fk_id_producto')->references('id')->on('productos')->onDelete('cascade');

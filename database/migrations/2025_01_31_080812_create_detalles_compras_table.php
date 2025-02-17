@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('fk_id_compra');
             $table->unsignedBigInteger('fk_id_producto');
-            $table->bigInteger('cantidad_detalles');
-            $table->decimal('precio_detalles', 8, 2);
-            $table->decimal('subtotal', 8, 2);
+            $table->bigInteger('cantidad_producto_detalles');
+            $table->decimal('precio_producto_detalles', 8, 2);
             $table->timestamps();
 
+            $table->foreign('fk_id_compra')->references('id')->on('compras')->onDelete('cascade');
+            $table->foreign('fk_id_producto')->references('id')->on('productos')->onDelete('cascade');
         });
     }
 

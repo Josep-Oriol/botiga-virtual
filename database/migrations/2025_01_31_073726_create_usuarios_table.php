@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('usuario_comprador', 255);
             $table->string('nombre_comprador', 255);
-            $table->string('apellidos_comprador', 255);
+            $table->string('apellidos_comprador', 255)->nullable();
             $table->string('email_comprador', 255);
-            $table->bigInteger('telefono_comprador');
-            $table->string('direccion_comprador', 255);
+            $table->bigInteger('telefono_comprador')->nullable();
+            $table->string('direccion_comprador', 255)->nullable();
             $table->string('password_comprador', 255);
-            $table->date('fecha_registro_comprador');
             $table->timestamps();
         });
     }

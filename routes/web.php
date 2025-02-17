@@ -9,8 +9,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('main/principal');
-});
+    return view('main');
+})->name('main');
 
 Route::resources([
     "categorias" => CategoriaController::class,
@@ -20,4 +20,6 @@ Route::resources([
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
+
+Route::apiResource('productos', ProductoController::class);
 

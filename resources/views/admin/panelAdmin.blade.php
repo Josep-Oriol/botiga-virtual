@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
-</head>
-<body>
-    <h1>Panel de Administración</h1>
-    <h2>Crear Producto</h2>
-    <form action="{{route('productos.store')}}" method="POST">
-    @csrf
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre_categoria">
+@extends('app')
 
-        <label for="codigo">Codigo Categoria</label>
-        <input type="text" name="codigo_categoria">
+@section('title', 'PC Markt')
 
-        <input type="submit" value="Enviar">
-    </form>
-</body>
-</html>
+@section('content')
+
+    <div class="flex h-screen">
+        @include('admin.utils.barraNavegacion')
+        <div class="content"></div>
+    </div>
+@endsection

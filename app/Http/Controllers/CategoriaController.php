@@ -12,7 +12,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Categoria::all());
     }
 
     /**
@@ -68,6 +68,20 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $categoria = Categoria::find($id);
+    
+            if ($categoria) {
+                $categoria->delete();
+    
+                $response = response()->json(['message' => 'Categoría eliminada correctamente'], 200);
+            } else {
+                $response = response()->json(['message' => 'Categoría no encontrada'], 404);
+            }
+        } catch (\Exception $e) {
+            $response = response()->json(['message' => 'Error al eliminar categoría'], 500);
+        }
+
+        return $response;
     }
 }

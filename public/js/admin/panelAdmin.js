@@ -1,6 +1,9 @@
-import { tenerProductos, contenidoProductos } from "./productos.js";
+import { contenidoProductos, popupCrearProducto } from "./productos.js";
+import { contenidoCategorias } from "./categorias.js";
 
 export const content = document.querySelector(".content");
+
+const botonCrearProducto = document.getElementById("popupCrearProducto");
 
 document.addEventListener("DOMContentLoaded", () => {
     const adminNavItems = document.querySelectorAll(".admin-nav-item");
@@ -19,13 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 content.innerHTML = "";
                 break;
             case "categorias":
-                content.innerHTML = "";
+                contenidoCategorias();
                 break;
             case "productos":
-                content.innerHTML = "";
                 contenidoProductos();
-                tenerProductos();
                 break;
         }
     }
+
+    botonCrearProducto.addEventListener("click", () => {
+        popupCrearProducto();
+    });
 });

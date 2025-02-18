@@ -28,12 +28,23 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        Producto::create([
-            'nombre_producto' => $request('nombre_producto'),
-            'descripcion_producto' => $request('descripcion_producto'),
-            'codigo_producto' => $request('fk_id_categoria'),
-            'precio_producto' => $request('precio_producto'),
+        $validatedData = $request->validate([
+            'nombre_producto' => 'required|string|max:255',
+            'descripcion_producto' => 'nullable|string',
+            'codigo_producto' => 'required|string|max:50|unique:productos,codigo_producto',
+            'fk_id_categoria' => 'nullable|exists:categorias,id',
+            'precio_producto' => 'required|numeric|min:0',
+            'stock_producto' => 'required|integer|min:0',
+            'destacado_producto' => 'required|boolean',
+            'foto_portada_producto' => 'nullable|string',
         ]);
+    
+        $producto = Producto::create($validatedData);
+    
+        return response()->json([
+            'message' => 'Producto creado exitosamente',
+            'producto' => $producto
+        ], 201);
     }
 
     /**
@@ -65,6 +76,20 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $producto = Producto::find($id);
+    
+            if ($producto) {
+                $producto->delete();
+    
+                $response = response()->json(['message' => 'Producto eliminado correctamente'], 200);
+            } else {
+                $response = response()->json(['message' => 'Producto no encontrado'], 404);
+            }
+        } catch (\Exception $e) {
+            $response = response()->json(['message' => 'Error al eliminar el producto'], 500);
+        }
+
+        return $response;
     }
 }

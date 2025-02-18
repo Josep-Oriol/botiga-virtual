@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('logos/favicon.ico') }}" type="image/x-icon">
     <script type="module" src="{{ asset('js/admin/panelAdmin.js') }}"></script>
     <title>@yield('title')</title>

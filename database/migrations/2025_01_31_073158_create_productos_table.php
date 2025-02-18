@@ -15,16 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_producto');
             $table->text('descripcion_producto')->nullable();
-            $table->text('descripcion_producto')->nullable();
-            $table->string('codigo_producto');
-            $table->unsignedBigInteger('fk_id_categoria')->nullable();
+            $table->string('codigo_producto')->unique();
             $table->unsignedBigInteger('fk_id_categoria')->nullable();
             $table->decimal('precio_producto', 8, 2);
             $table->bigInteger('stock_producto');
-            $table->boolean('destacado_producto');
-            $table->string('fk_fotos_producto')->nullable();
+            $table->boolean('destacado_producto')->default(false);
+            $table->string('foto_portada_producto')->nullable();
             $table->timestamps();
-
 
             $table->foreign('fk_id_categoria')->references('id')->on('categorias')->onDelete('cascade');
         });

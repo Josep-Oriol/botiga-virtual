@@ -22,4 +22,6 @@ Route::resources([
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
 
 Route::apiResource('productos', ProductoController::class);
+Route::apiResource('categorias', CategoriaController::class);
+Route::apiResource('usuarios', UsuarioController::class);
 

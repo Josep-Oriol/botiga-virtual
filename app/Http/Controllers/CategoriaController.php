@@ -18,6 +18,10 @@ class CategoriaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function mostrarFormularioCategoria(){
+        return view('admin/crearCategoria');
+    }
+
     public function create()
     {
         return view('categorias/crearCategoria');

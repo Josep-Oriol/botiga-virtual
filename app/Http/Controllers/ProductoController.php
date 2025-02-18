@@ -10,6 +10,10 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function mostrarFormularioProducto(){
+        return view('admin/crearProducto');
+    }
+
     public function index()
     {
         return response()->json(Producto::all());
@@ -27,24 +31,16 @@ class ProductoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nombre_producto' => 'required|string|max:255',
-            'descripcion_producto' => 'nullable|string',
-            'codigo_producto' => 'required|string|max:50|unique:productos,codigo_producto',
-            'fk_id_categoria' => 'nullable|exists:categorias,id',
-            'precio_producto' => 'required|numeric|min:0',
-            'stock_producto' => 'required|integer|min:0',
-            'destacado_producto' => 'required|boolean',
-            'foto_portada_producto' => 'nullable|string',
+    {   
+        
+        Producto::create([
+            'nombre_producto' => request('nombre_producto'),
+            'descripcion_producto' => request('descripcion_producto'),
+            'codigo_producto' => request('codigo_producto'),
+            'precio_producto' => request('precio_producto'),
+            'stock_producto' => request('stock_producto'),
+            'destacado_producto' => request('destacado_producto')
         ]);
-    
-        $producto = Producto::create($validatedData);
-    
-        return response()->json([
-            'message' => 'Producto creado exitosamente',
-            'producto' => $producto
-        ], 201);
     }
 
     /**

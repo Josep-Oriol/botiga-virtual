@@ -23,4 +23,9 @@ class Producto extends Model
     {
         return $this->belongsTo(Categoria::class, 'fk_id_categoria');
     }
+
+    /*public function fotos ()
+    {
+        return $this->hasMany(Foto::class, 'fk_id_producto');
+    }*/
 }

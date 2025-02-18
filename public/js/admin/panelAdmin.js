@@ -1,12 +1,16 @@
-import { contenidoProductos, popupCrearProducto } from "./productos.js";
+import { contenidoProductos } from "./productos.js";
 import { contenidoCategorias } from "./categorias.js";
 
 export const content = document.querySelector(".content");
 
-const botonCrearProducto = document.getElementById("popupCrearProducto");
+export const crear = document.getElementById("crear");
 
 document.addEventListener("DOMContentLoaded", () => {
     const adminNavItems = document.querySelectorAll(".admin-nav-item");
+
+    crear.addEventListener("click", () => {
+        popupCrearProducto();
+    });
 
     adminNavItems.forEach((item) => {
         item.addEventListener("click", () => {
@@ -29,8 +33,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
         }
     }
-
-    botonCrearProducto.addEventListener("click", () => {
-        popupCrearProducto();
-    });
 });

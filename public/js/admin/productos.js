@@ -15,11 +15,12 @@ async function listarProductos() {
             "flex",
             "justify-between",
             "items-center",
-            "pt-4",
+            "mt-4",
+            "p-4",
             "border-gray-700",
             "rounded-lg",
             "shadow-md",
-            "bg-gray-800",
+            "bg-custom-dark1",
             "cursor-pointer"
         );
 
@@ -58,120 +59,6 @@ async function listarProductos() {
         productoDiv.appendChild(divIcons);
         listaProductos.appendChild(productoDiv);
     }
-}
-
-export function popupCrearProducto() {
-    // Verificar si ya existe el modal y eliminarlo para evitar duplicaciones
-    let existingModal = document.getElementById("popupOverlay");
-    if (existingModal) {
-        existingModal.remove();
-    }
-
-    const modalOverlay = document.createElement("div");
-    modalOverlay.id = "popupOverlay";
-    modalOverlay.className =
-        "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
-
-    const modalContent = document.createElement("div");
-    modalContent.className = "bg-custom-dark3 p-6 rounded-lg shadow-lg w-96";
-
-    const modalTitle = document.createElement("h2");
-    modalTitle.className = "text-xl font-semibold text-white mb-4";
-    modalTitle.innerText = "Añadir Nuevo Producto";
-
-    const form = document.createElement("form");
-    form.className = "space-y-4";
-
-    form.appendChild(
-        createInputField("nombre_producto", "Nombre del Producto")
-    );
-    form.appendChild(
-        createInputField(
-            "descripcion_producto",
-            "Descripción del Producto",
-            "textarea"
-        )
-    );
-    form.appendChild(
-        createInputField("codigo_producto", "Código del Producto")
-    );
-    form.appendChild(createInputField("precio_producto", "Precio", "number"));
-    form.appendChild(createInputField("stock_producto", "Stock", "number"));
-
-    // Checkbox Producto Destacado
-    const checkboxDiv = document.createElement("div");
-    checkboxDiv.className = "flex items-center gap-2";
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = "destacado_producto";
-    checkbox.className = "form-checkbox h-5 w-5 text-primary";
-    const checkboxLabel = document.createElement("label");
-    checkboxLabel.htmlFor = "destacado_producto";
-    checkboxLabel.className = "text-white";
-    checkboxLabel.innerText = "Destacar Producto";
-    checkboxDiv.appendChild(checkbox);
-    checkboxDiv.appendChild(checkboxLabel);
-    form.appendChild(checkboxDiv);
-
-    const buttonsDiv = document.createElement("div");
-    buttonsDiv.className = "flex justify-end gap-2";
-
-    const cancelButton = document.createElement("button");
-    cancelButton.innerText = "Cancelar";
-    cancelButton.className =
-        "bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded";
-    cancelButton.onclick = function (event) {
-        event.preventDefault();
-        document.getElementById("popupOverlay").remove();
-    };
-
-    const saveButton = document.createElement("button");
-    saveButton.innerText = "Guardar";
-    saveButton.className =
-        "bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded";
-    saveButton.type = "submit";
-    saveButton.onclick = async function (event) {
-        event.preventDefault();
-        await crearProducto();
-    };
-
-    buttonsDiv.appendChild(cancelButton);
-    buttonsDiv.appendChild(saveButton);
-    form.appendChild(buttonsDiv);
-
-    modalContent.appendChild(modalTitle);
-    modalContent.appendChild(form);
-    modalOverlay.appendChild(modalContent);
-
-    document.body.appendChild(modalOverlay);
-}
-
-function createInputField(id, label, type = "text") {
-    const div = document.createElement("div");
-    div.className = "flex flex-col";
-
-    const inputLabel = document.createElement("label");
-    inputLabel.htmlFor = id;
-    inputLabel.className = "text-white text-sm mb-1";
-    inputLabel.innerText = label;
-
-    let inputElement;
-    if (type === "textarea") {
-        inputElement = document.createElement("textarea");
-        inputElement.rows = 3;
-    } else {
-        inputElement = document.createElement("input");
-        inputElement.type = type;
-    }
-
-    inputElement.id = id;
-    inputElement.className =
-        "p-2 bg-custom-dark2 border border-gray-600 rounded text-white focus:outline-none focus:border-primary";
-
-    div.appendChild(inputLabel);
-    div.appendChild(inputElement);
-
-    return div;
 }
 
 async function obtenerProductos() {

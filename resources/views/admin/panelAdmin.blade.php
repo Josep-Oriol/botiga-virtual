@@ -88,14 +88,15 @@
             <div class="bg-custom-dark3 p-6 rounded-lg shadow-md mt-6">
                 <div class="flex justify-between items-center">
                     <p class="text-lg font-semibold">Listado de Productos</p>
-                    <div class="flex justify-end">
-                        <button class="bg-custom-dark1 text-white px-4 py-2 rounded-md flex items-center gap-2" id="popupCrearProducto">
+                    <div class="flex justify-end gap-6">
+                        <input type="text" placeholder="Buscar..." class="text-gray-400 p-4 rounded-lg bg-custom-dark2 w-64">
+                        <button class="bg-custom-dark1 text-gray-400 hover:text-white px-4 py-2 rounded-md flex items-center gap-2" id="crear">
                             <img src="{{ asset('icons/admin/plus.svg') }}" alt="Añadir Producto" class="w-6 h-6">
                             Añadir Producto
                         </button>
                     </div>
                 </div>
-                <div class="mt-4 h-32 bg-custom-dark3 rounded-lg" id="tabla"></div>
+                <div class="mt-4 bg-custom-dark3 rounded-lg" id="tabla"></div>
             </div>
         </div>
     </div>

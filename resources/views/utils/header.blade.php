@@ -11,7 +11,7 @@
 
         <nav class="flex items-center space-x-6 text-gray-300">
             
-            <a href="#" class="flex items-center space-x-2 hover:text-white cursor-pointer">
+            <a href="{{ route('mostrarFormularioCategoria') }}" class="flex items-center space-x-2 hover:text-white cursor-pointer">
                 <img src="{{ asset('icons/web/menu.svg') }}" alt="Categorías" class="w-6 h-6">
                 <span class="pl-1">Categorías</span>
             </a>
@@ -25,7 +25,7 @@
                 <span>Mi cuenta</span>
             </a>
 
-            <a href="#" class="flex items-center space-x-2 hover:text-white">
+            <a href="{{ route('mostrarFormularioProducto') }}" class="flex items-center space-x-2 hover:text-white">
                 <img src="{{ asset('icons/web/shopping-cart.svg') }}" alt="Mi cesta" class="w-6 h-6">
                 <span>Mi cesta</span>
             </a>

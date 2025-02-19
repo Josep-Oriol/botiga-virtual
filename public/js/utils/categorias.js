@@ -2,6 +2,29 @@ export function contenidoCategorias() {
     listarCategorias();
 }
 
+export function setContenidoCategorias() {
+    const titulo = document.getElementById("titulo");
+    titulo.textContent = "Categorias";
+
+    const tituloEstadisticas = document.getElementById("tituloEstadisticas");
+    tituloEstadisticas.textContent = "Categorias Totales";
+
+    const tituloActivos = document.getElementById("tituloActivos");
+    tituloActivos.textContent = "Categorias Activas";
+
+    const tituloInactivos = document.getElementById("tituloInactivos");
+    tituloInactivos.textContent = "Categorias Inactivas";
+
+    const tituloPopulares = document.getElementById("tituloPopulares");
+    tituloPopulares.textContent = "Categroias Populares";
+
+    const tituloListado = document.getElementById("tituloListado");
+    tituloListado.textContent = "Listado de Categorias";
+
+    const crear = document.getElementById("crear");
+    crear.textContent = "Añadir nueva categoria";
+}
+
 async function listarCategorias() {
     const listaCategorias = document.getElementById("tabla");
     listaCategorias.innerHTML = "";

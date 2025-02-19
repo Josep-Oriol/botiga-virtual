@@ -1,7 +1,30 @@
-import { content } from "./panelAdmin.js";
+import { content } from "../admin/panelAdmin.js";
 
 export function contenidoProductos() {
     listarProductos();
+}
+
+export function setContenidoProductos() {
+    const titulo = document.getElementById("titulo");
+    titulo.textContent = "Productos";
+
+    const tituloEstadisticas = document.getElementById("tituloEstadisticas");
+    tituloEstadisticas.textContent = "Productos Totales";
+
+    const tituloActivos = document.getElementById("tituloActivos");
+    tituloActivos.textContent = "Productos Activos";
+
+    const tituloInactivos = document.getElementById("tituloInactivos");
+    tituloInactivos.textContent = "Productos Inactivos";
+
+    const tituloPopulares = document.getElementById("tituloPopulares");
+    tituloPopulares.textContent = "Productos Populares";
+
+    const tituloListado = document.getElementById("tituloListado");
+    tituloListado.textContent = "Listado de Productos";
+
+    const crear = document.getElementById("crear");
+    crear.textContent = "Añadir nuevo producto";
 }
 
 async function listarProductos() {
@@ -65,53 +88,6 @@ async function obtenerProductos() {
     const productos = await fetch("/productos");
     const data = await productos.json();
     return Array.isArray(data) ? data : [];
-}
-
-async function crearProducto() {
-    try {
-        const data = {
-            nombre_producto: document.getElementById("nombre_producto").value,
-            descripcion_producto: document.getElementById(
-                "descripcion_producto"
-            ).value,
-            codigo_producto: document.getElementById("codigo_producto").value,
-            precio_producto: parseFloat(
-                document.getElementById("precio_producto").value
-            ),
-            stock_producto: parseInt(
-                document.getElementById("stock_producto").value
-            ),
-            destacado_producto: document.getElementById("destacado_producto")
-                .checked
-                ? 1
-                : 0,
-        };
-
-        const response = await fetch("/productos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
-            },
-            body: JSON.stringify(data),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            alert("Producto creado correctamente");
-            document.getElementById("popupOverlay").remove(); // Cerrar modal si fue exitoso
-        } else {
-            alert(
-                "Error: " + (result.message || "No se pudo crear el producto")
-            );
-        }
-    } catch (error) {
-        console.error("Error al crear producto:", error);
-        alert("Ocurrió un error al crear el producto");
-    }
 }
 
 async function eliminarProducto(id) {

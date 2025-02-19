@@ -1,5 +1,11 @@
-import { contenidoProductos } from "./productos.js";
-import { contenidoCategorias } from "./categorias.js";
+import {
+    contenidoProductos,
+    setContenidoProductos,
+} from "../utils/productos.js";
+import {
+    contenidoCategorias,
+    setContenidoCategorias,
+} from "../utils/categorias.js";
 
 export const content = document.querySelector(".content");
 
@@ -26,9 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 content.innerHTML = "";
                 break;
             case "categorias":
+                setContenidoCategorias();
                 contenidoCategorias();
                 break;
             case "productos":
+                setContenidoProductos();
                 contenidoProductos();
                 break;
         }

@@ -1,13 +1,13 @@
-@extends('app')
+@extends('appAdmin')
 
-@section('title', 'Productos')
+@section('title', 'Panel Admin')
 
 @section('content')
 
-    <div class="flex h-screen">
+    <div class="flex h-screen" id="panelAdmin">
         @include('admin.utils.barraNavegacion')
 
-        <div class="content flex-1 bg-custom-dark1 p-4 text-white">
+        <div class="content flex-1 bg-custom-dark1 p-4 text-white" id="panelAdminContent">
             
             <!-- Título -->
             <h2 class="text-2xl font-bold mb-4" id="titulo"></h2>
@@ -47,7 +47,7 @@
                     <div class="h-40 bg-custom-dark2 rounded-lg"></div> <!-- Aquí iría el gráfico -->
                 </div>
 
-                <!-- Productos Populares -->
+                <!-- Populares -->
                 <div class="bg-custom-dark3 p-6 rounded-lg shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-lg font-semibold" id="tituloPopulares"></h3>
@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <!-- Listado de Productos -->
+            <!-- Listado -->
             <div class="bg-custom-dark3 p-6 rounded-lg shadow-md mt-6">
                 <div class="flex justify-between items-center">
                     <p class="text-lg font-semibold" id="tituloListado"></p>

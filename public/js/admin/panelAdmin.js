@@ -14,9 +14,11 @@ export const crear = document.getElementById("crear");
 document.addEventListener("DOMContentLoaded", () => {
     const adminNavItems = document.querySelectorAll(".admin-nav-item");
 
-    crear.addEventListener("click", () => {
-        popupCrearProducto();
-    });
+    if (crear) {
+        crear.addEventListener("click", () => {
+            popupCrearProducto();
+        });
+    }
 
     adminNavItems.forEach((item) => {
         item.addEventListener("click", () => {
@@ -42,3 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+export function asset(path) {
+    const baseUrl = document
+        .querySelector('meta[name="asset-url"]')
+        .getAttribute("content");
+    return baseUrl + path;
+}

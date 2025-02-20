@@ -1,34 +1,38 @@
-<aside class="bg-custom-dark1 h-full w-64 pl-4 pr-4">
-    <div class="flex-grow overflow-y-auto">
-        <ul class="space-y-2">
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="estats">
-                <img src="{{ asset('icons/web/estats.svg') }}" alt="Estadísticas" class="w-6 h-6">
-                <span>Estadísticas</span>
-            </li>
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
-            <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-6 h-6">
-                <span>Categorías</span>
-            </li>
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="productos">
-                <img src="{{ asset('icons/web/packages.svg') }}" alt="Productos" class="w-6 h-6">
-                <span>Productos</span>
-            </li>
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="usuarios">
-                <img src="{{ asset('icons/web/users.svg') }}" alt="Usuarios" class="w-6 h-6">
-                <span>Usuarios</span>
-            </li>
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
-                <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-6 h-6">
-                <span>Pedidos</span>
-            </li>
-            <li class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="configuracion">
-                <img src="{{ asset('icons/web/settings.svg') }}" alt="Configuración" class="w-6 h-6">
-                <span>Configuración</span>
-            </li>
-        </ul>
+<aside class="h-screen w-64 bg-custom-dark1 p-4 flex flex-col justify-between">
+    <div class="flex-grow overflow-y-auto pt-4">
+        <div class="space-y-2 gap-6 flex flex-col pl-4">
+            <div class="flex items-center space-x-2 pb-4 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="dashboard">
+                <img src="{{ asset('logos/logo.png') }}" alt="Logo" class="w-12 h-12">
+                <span class="text-2xl">Dashboard</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="estats">
+                <img src="{{ asset('icons/web/estats.svg') }}" alt="Estadísticas" class="w-8 h-8">
+                <span class="text-2xl">Estadísticas</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
+                <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-8 h-8">
+                <span class="text-2xl">Categorías</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="productos">
+                <img src="{{ asset('icons/web/packages.svg') }}" alt="Productos" class="w-8 h-8">
+                <span class="text-2xl">Productos</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="usuarios">
+                <img src="{{ asset('icons/web/users.svg') }}" alt="Usuarios" class="w-8 h-8">
+                <span class="text-2xl">Usuarios</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
+                <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-8 h-8">
+                <span class="text-2xl">Pedidos</span>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="configuracion">
+                <img src="{{ asset('icons/web/settings.svg') }}" alt="Configuración" class="w-8 h-8">
+                <span class="text-2xl">Configuración</span>
+            </div>
+        </div>
     </div>
-    <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="logout">
+    <div class="flex items-center justify-center space-x-2 cursor-pointer text-gray-300 hover:text-white mb-4 admin-nav-item" id="logout">
         <img src="{{ asset('icons/web/logout.svg') }}" alt="Logout" class="w-6 h-6">
-        <span>Salir</span>
+        <span class="text-xl">Salir</span>
     </div>
 </aside>

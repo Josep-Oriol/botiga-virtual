@@ -1,4 +1,4 @@
-import { content } from "../admin/panelAdmin.js";
+import { asset } from "../admin/panelAdmin.js";
 
 export function contenidoProductos() {
     listarProductos();
@@ -58,15 +58,15 @@ async function listarProductos() {
         precioProducto.classList.add("text-primary");
 
         const divIcons = document.createElement("div");
-        divIcons.classList.add("flex", "gap-2", "pr-4");
+        divIcons.classList.add("flex", "gap-4", "pr-4");
         const editarProducto = document.createElement("img");
-        editarProducto.src = "{{asset('icons/admin/edit.svg') }}";
+        editarProducto.src = asset("icons/admin/edit.svg");
 
         const verProducto = document.createElement("img");
-        verProducto.src = "{{asset('icons/admin/eye.svg') }}";
+        verProducto.src = asset("icons/admin/eye.svg");
 
         const confirmarEliminarProducto = document.createElement("img");
-        confirmarEliminarProducto.src = "{{asset('icons/admin/trash.svg') }}";
+        confirmarEliminarProducto.src = asset("icons/admin/trash.svg");
         confirmarEliminarProducto.addEventListener("click", () => {
             eliminarProducto(producto.id);
         });

@@ -11,13 +11,13 @@
 </head>
 <body class="bg-custom-dark1 text-white">
 
-    @include('utils.header')
+    <!--@include('utils.header')-->
 
     <main class="min-h-screen">
         @yield('content')
     </main>
 
-    @include('utils.footer')
+    <!--@include('utils.footer')-->
 
 </body>
 </html>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descripcion_producto')->nullable();
             $table->string('codigo_producto')->unique();
             $table->unsignedBigInteger('fk_id_categoria')->nullable();
+            $table->unsignedBigInteger('fk_id_marca')->nullable();
             $table->decimal('precio_producto', 8, 2);
             $table->bigInteger('stock_producto');
             $table->boolean('destacado_producto')->default(false);
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('fk_id_categoria')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('fk_id_marca')->references('id')->on('marcas')->onDelete('cascade');
         });
     }
 

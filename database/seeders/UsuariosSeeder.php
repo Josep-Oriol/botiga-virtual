@@ -16,13 +16,13 @@ class UsuariosSeeder extends Seeder
     {
         DB::table('usuarios')->insert([
             [
-                'usuario_usuario' => 'admin1',
-                'nombre_usuario' => 'Juan',
+                'usuario_usuario' => 'admin',
+                'nombre_usuario' => 'a',
                 'apellidos_usuario' => 'Pérez López',
-                'email_usuario' => 'juanperez@example.com',
+                'email_usuario' => 'a@gmail.com',
                 'telefono_usuario' => 5551234567,
                 'direccion_usuario' => 'Calle Falsa 123, CDMX',
-                'password_usuario' => Hash::make('admin123'), // Contraseña encriptada
+                'password_usuario' => Hash::make('a'),
                 'tipo_usuario' => 'admin',
                 'activo_usuario' => true,
                 'created_at' => now(),
@@ -50,7 +50,7 @@ class UsuariosSeeder extends Seeder
                 'direccion_usuario' => 'Col. Centro 789, Monterrey',
                 'password_usuario' => Hash::make('techlover'),
                 'tipo_usuario' => 'comprador',
-                'activo_usuario' => false, // Usuario inactivo
+                'activo_usuario' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

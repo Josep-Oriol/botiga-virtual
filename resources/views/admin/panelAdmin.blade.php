@@ -16,15 +16,15 @@
             <div class="grid grid-cols-4 gap-4 mb-6 w-full">
                 <div class="bg-custom-dark3 p-4 rounded-lg shadow-md">
                     <h3 class="text-sm font-semibold text-gray-400" id="tituloEstadisticas"></h3>
-                    <p class="text-2xl font-bold">120</p>
+                    <p class="text-2xl font-bold" id="totalProductos"></p>
                 </div>
                 <div class="bg-custom-dark3 p-4 rounded-lg shadow-md">
                     <h3 class="text-sm font-semibold text-gray-400" id="tituloActivos"></h3>
-                    <p class="text-2xl font-bold">94</p>
+                    <p class="text-2xl font-bold" id="totalProductosActivos"></p>
                 </div>
                 <div class="bg-custom-dark3 p-4 rounded-lg shadow-md">
                     <h3 class="text-sm font-semibold text-gray-400" id="tituloInactivos"></h3>
-                    <p class="text-2xl font-bold">26</p>
+                    <p class="text-2xl font-bold" id="totalProductosInactivos"></p>
                 </div>
                 <div class="bg-custom-dark3 p-4 rounded-lg shadow-md">
                     <h3 class="text-sm font-semibold text-gray-400">Órdenes</h3>
@@ -38,7 +38,7 @@
                 <!-- Ventas Mensuales -->
                 <div class="bg-custom-dark3 p-6 rounded-lg shadow-md">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">Ventas Mensuales</h3>
+                        <h3 class="text-lg font-semibold">Ventas</h3>
                         <select class="bg-custom-dark1 text-white p-2 rounded">
                             <option>Este Año</option>
                             <option>Últimos 6 Meses</option>
@@ -87,10 +87,15 @@
             <!-- Listado -->
             <div class="bg-custom-dark3 p-6 rounded-lg shadow-md mt-6">
                 <div class="flex justify-between items-center">
-                    <p class="text-lg font-semibold" id="tituloListado"></p>
+                    <p class="text-2xl font-semibold" id="tituloListado"></p>
                     <div class="flex justify-end gap-6">
+                        <select name="estado" id="estado" class="bg-custom-dark2 text-white p-2 rounded">
+                            <option value="todos">Todos</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
                         <input type="text" placeholder="Buscar..." class="text-gray-400 p-4 rounded-lg bg-custom-dark2 w-64">
-                        <button class="bg-custom-dark1 text-gray-400 hover:text-white px-4 py-2 rounded-md flex items-center gap-2" id="crear">
+                        <button class="bg-custom-dark2 text-gray-400 hover:text-white px-4 py-2 rounded-md flex items-center gap-2" id="crear">
                             <img src="{{ asset('icons/admin/plus.svg') }}" alt="Añadir nuevo" class="w-6 h-6"> 
                         </button>
                     </div>

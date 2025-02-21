@@ -24,13 +24,31 @@ export function setContenidoProductos() {
     tituloListado.textContent = "Listado de Productos";
 
     const crear = document.getElementById("crear");
-    crear.textContent = "Añadir nuevo producto";
+    crear.innerHTML = "";
+    const plusCrear = document.createElement("img");
+    plusCrear.src = asset("icons/admin/plus.svg");
+    crear.appendChild(plusCrear);
+    crear.innerHTML += "Añadir nuevo producto";
 }
 
 async function listarProductos() {
     const listaProductos = document.getElementById("tabla");
     listaProductos.innerHTML = "";
     const productos = await obtenerProductos();
+    const estadisticas = await obtenerEstadisticas();
+
+    const totalProductos = document.getElementById("totalProductos");
+    totalProductos.textContent = estadisticas.total_productos;
+
+    const totalProductosActivos = document.getElementById(
+        "totalProductosActivos"
+    );
+    totalProductosActivos.textContent = estadisticas.productos_activos;
+
+    const totalProductosInactivos = document.getElementById(
+        "totalProductosInactivos"
+    );
+    totalProductosInactivos.textContent = estadisticas.productos_inactivos;
 
     for (let producto of productos) {
         const productoDiv = document.createElement("div");
@@ -57,6 +75,19 @@ async function listarProductos() {
         precioProducto.textContent = producto.precio_producto + "€";
         precioProducto.classList.add("text-primary");
 
+        const estadoProducto = document.createElement("p");
+        if (producto.activo_producto) {
+            estadoProducto.textContent = "Activo";
+            estadoProducto.classList.add("rounded-md", "bg-green-500");
+        } else {
+            estadoProducto.textContent = "Inactivo";
+            estadoProducto.classList.add("rounded-md", "bg-red-500");
+        }
+
+        const divEstado = document.createElement("div");
+        divEstado.classList.add("flex", "gap-4");
+        divEstado.appendChild(estadoProducto);
+
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "gap-4", "pr-4");
         const editarProducto = document.createElement("img");
@@ -79,7 +110,8 @@ async function listarProductos() {
         divIcons.appendChild(confirmarEliminarProducto);
 
         productoDiv.appendChild(divDatos);
-        productoDiv.appendChild(divIcons);
+        divEstado.appendChild(divIcons);
+        productoDiv.appendChild(divEstado);
         listaProductos.appendChild(productoDiv);
     }
 }
@@ -116,4 +148,11 @@ async function editarProducto(id) {
     const producto = await fetch(`/productos/${id}`, {
         method: "PUT",
     });
+}
+
+async function obtenerEstadisticas() {
+    const estadisticas = await fetch("/productos/estadisticas");
+    const data = await estadisticas.json();
+
+    return Array.isArray(data) ? data : [];
 }

@@ -1,3 +1,5 @@
+import { asset } from "../admin/panelAdmin.js";
+
 export function contenidoCategorias() {
     listarCategorias();
 }
@@ -22,6 +24,10 @@ export function setContenidoCategorias() {
     tituloListado.textContent = "Listado de Categorias";
 
     const crear = document.getElementById("crear");
+    crear.innerHTML = "";
+    const plusCrear = document.createElement("img");
+    plusCrear.src = asset("icons/admin/plus.svg");
+    crear.appendChild(plusCrear);
     crear.textContent = "Añadir nueva categoria";
 }
 
@@ -36,11 +42,12 @@ async function listarCategorias() {
             "flex",
             "justify-between",
             "items-center",
-            "pt-4",
+            "mt-4",
+            "p-4",
             "border-gray-700",
             "rounded-lg",
             "shadow-md",
-            "bg-gray-800",
+            "bg-custom-dark1",
             "cursor-pointer"
         );
 
@@ -57,13 +64,13 @@ async function listarCategorias() {
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "gap-2", "pr-4");
         const editarCategoria = document.createElement("img");
-        editarCategoria.src = "{{asset('icons/admin/edit.svg') }}";
+        editarCategoria.src = asset("icons/admin/edit.svg");
 
         const verCategoria = document.createElement("img");
-        verCategoria.src = "{{asset('icons/admin/eye.svg') }}";
+        verCategoria.src = asset("icons/admin/eye.svg");
 
         const confirmarEliminarCategoria = document.createElement("img");
-        confirmarEliminarCategoria.src = "{{asset('icons/admin/trash.svg') }}";
+        confirmarEliminarCategoria.src = asset("icons/admin/trash.svg");
         confirmarEliminarCategoria.addEventListener("click", () => {
             eliminarCategoria(categoria.id);
         });

@@ -39,8 +39,11 @@ class ProductoController extends Controller
             'codigo_producto' => request('codigo_producto'),
             'precio_producto' => request('precio_producto'),
             'stock_producto' => request('stock_producto'),
-            'destacado_producto' => request('destacado_producto')
+            'destacado_producto' => request()->has('destacado_producto') ? true : false,
+            'activo_producto' => request()->has('activo_producto') ? true : false
         ]);
+
+        return redirect()->route('mostrarPanelAdmin');
     }
 
     /**
@@ -87,5 +90,18 @@ class ProductoController extends Controller
         }
 
         return $response;
+    }
+
+    public function obtenerEstadisticas()
+    {
+        $totalProductos = Producto::count();
+        $productosActivos = Producto::where('activo_producto', true)->count();
+        $productosInactivos = Producto::where('activo_producto', false)->count();
+
+        return response()->json([
+            'total_productos' => $totalProductos,
+            'productos_activos' => $productosActivos,
+            'productos_inactivos' => $productosInactivos
+        ]);
     }
 }

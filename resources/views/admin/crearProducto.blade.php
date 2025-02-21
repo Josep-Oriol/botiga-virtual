@@ -18,6 +18,8 @@
     <input type="number" name="stock_producto" id="stock_producto"><br><br>
     <label for="destacado_producto"></label>
     <input type="checkbox" name="destacado_producto" id="destacado_producto"><br><br>
+    <label for="activo_producto">Activo</label>
+    <input type="checkbox" name="activo_producto" id="activo_producto"><br><br>
     <input type="submit" value="Enviar">
 </form>
 

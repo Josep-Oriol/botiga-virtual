@@ -2,6 +2,7 @@ import {
     contenidoProductos,
     setContenidoProductos,
 } from "../utils/productos.js";
+
 import {
     contenidoCategorias,
     setContenidoCategorias,

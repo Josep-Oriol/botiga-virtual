@@ -28,3 +28,4 @@ Route::apiResource('productos', ProductoController::class);
 Route::apiResource('categorias', CategoriaController::class);
 Route::apiResource('usuarios', UsuarioController::class);
 
+Route::get('/productos/estadisticas', [ProductoController::class, 'obtenerEstadisticas']);

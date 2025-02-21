@@ -98,10 +98,12 @@ class ProductoController extends Controller
         $productosActivos = Producto::where('activo_producto', true)->count();
         $productosInactivos = Producto::where('activo_producto', false)->count();
 
-        return response()->json([
+        /*return response()->json([
             'total_productos' => $totalProductos,
             'productos_activos' => $productosActivos,
             'productos_inactivos' => $productosInactivos
-        ]);
+        ]);*/
+
+        return response()->json(Producto::count());
     }
 }

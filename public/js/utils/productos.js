@@ -34,10 +34,11 @@ export function setContenidoProductos() {
 async function listarProductos() {
     const listaProductos = document.getElementById("tabla");
     listaProductos.innerHTML = "";
-    const productos = await obtenerProductos();
-    const estadisticas = await obtenerEstadisticas();
 
-    const totalProductos = document.getElementById("totalProductos");
+    const productos = await obtenerProductos();
+    //const estadisticas = await obtenerEstadisticas();
+
+    /*const totalProductos = document.getElementById("totalProductos");
     totalProductos.textContent = estadisticas.total_productos;
 
     const totalProductosActivos = document.getElementById(
@@ -48,7 +49,7 @@ async function listarProductos() {
     const totalProductosInactivos = document.getElementById(
         "totalProductosInactivos"
     );
-    totalProductosInactivos.textContent = estadisticas.productos_inactivos;
+    totalProductosInactivos.textContent = estadisticas.productos_inactivos;*/
 
     for (let producto of productos) {
         const productoDiv = document.createElement("div");
@@ -62,7 +63,7 @@ async function listarProductos() {
             "rounded-lg",
             "shadow-md",
             "bg-custom-dark1",
-            "cursor-pointer"
+            "cursor-default"
         );
 
         const divDatos = document.createElement("div");
@@ -90,14 +91,24 @@ async function listarProductos() {
 
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "gap-4", "pr-4");
+
         const editarProducto = document.createElement("img");
         editarProducto.src = asset("icons/admin/edit.svg");
+        editarProducto.classList.add("cursor-pointer");
+        editarProducto.addEventListener("click", () => {
+            window.location.href = `/productos/${producto.id}/edit`;
+        });
 
         const verProducto = document.createElement("img");
         verProducto.src = asset("icons/admin/eye.svg");
+        verProducto.classList.add("cursor-pointer");
+        verProducto.addEventListener("click", () => {
+            window.location.href = `/productos/${producto.id}`;
+        });
 
         const confirmarEliminarProducto = document.createElement("img");
         confirmarEliminarProducto.src = asset("icons/admin/trash.svg");
+        confirmarEliminarProducto.classList.add("cursor-pointer");
         confirmarEliminarProducto.addEventListener("click", () => {
             eliminarProducto(producto.id);
         });
@@ -153,6 +164,8 @@ async function editarProducto(id) {
 async function obtenerEstadisticas() {
     const estadisticas = await fetch("/productos/estadisticas");
     const data = await estadisticas.json();
+    console.log(data);
 
     return Array.isArray(data) ? data : [];
+    //return data;
 }

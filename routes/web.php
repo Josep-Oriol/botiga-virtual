@@ -20,6 +20,7 @@ Route::resources([
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
+Route::get('login',[UsuarioController::class, 'mostrarLogin'])->name('mostrarLogin');
 
 Route::get('crear-producto', [ProductoController::class, 'mostrarFormularioProducto'])->name('mostrarFormularioProducto');
 Route::get('crear-categoria', [CategoriaController::class, 'mostrarFormularioCategoria'])->name('mostrarFormularioCategoria');

@@ -14,6 +14,10 @@ class UsuarioController extends Controller
         return view('admin/panelAdmin');
     }
 
+    public function mostrarLogin(){
+        return view('login');
+    }
+
     public function login()
     {
         return view('main/login');

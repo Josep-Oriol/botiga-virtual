@@ -29,6 +29,11 @@
                 <img src="{{ asset('icons/web/shopping-cart.svg') }}" alt="Mi cesta" class="w-6 h-6">
                 <span>Mi cesta</span>
             </a>
+
+            <a href="{{ route('mostrarLogin') }}" class="flex items-center space-x-2 hover:text-white">
+                <img src="{{ asset('icons/web/shopping-cart.svg') }}" alt="Mi cesta" class="w-6 h-6">
+                <span>Mi cesta</span>
+            </a>
             
         </nav>
     </div>

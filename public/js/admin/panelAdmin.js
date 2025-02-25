@@ -1,6 +1,7 @@
 import { listarProductos } from "../utils/productos.js";
 import { listarCategorias } from "../utils/categorias.js";
 import { listarUsuarios } from "../utils/usuarios.js";
+import { listarCompras } from "../utils/compras.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const listadoProductos = document.getElementById("listadoProductos");
@@ -16,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (listadoUsuarios) {
         console.log("listadoUsuarios");
         listarUsuarios();
+    } else if (listadoCompras) {
+        console.log("listadoCompras");
+        listarCompras();
     }
 });
 

@@ -10,7 +10,10 @@ class UsuarioController extends Controller
      * Display a listing of the resource.
      */
     public function mostrarEstadisticasUsuario(){
-        return view('admin/usuarios/estadisticaUsuario');
+        $totales = Usuario::count();
+        $usuariosActivos = Usuario::where('activo_usuario', true)->count();
+        $usuariosInactivos = Usuario::where('activo_usuario', false)->count();
+        return view('admin/usuarios/estadisticaUsuario', compact('totales', 'usuariosActivos', 'usuariosInactivos'));
     }
 
     public function mostrarPanelAdmin(){

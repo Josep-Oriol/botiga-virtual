@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route ('categorias.store') }}" method="POST">
+<form action="{{ route ('categorias.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="nombre_categoria">Nombre categoria</label><br>
     <input type="text" name="nombre_categoria" id="nombre_categoria" class="bg-custom-dark2 text-white p-2 rounded" required autocomplete="off"><br><br>

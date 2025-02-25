@@ -11,15 +11,15 @@
         <div class="grid grid-cols-4 gap-4 mb-6">
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Categorías Totales</p>
-                <h2 class="text-3xl font-bold" id="totalCategorias"></h2>
+                <h2 class="text-3xl font-bold" id="totalCategorias">{{ $totales }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Categorías Activas</p>
-                <h2 class="text-3xl font-bold" id="totalCategoriasActivas"></h2>
+                <h2 class="text-3xl font-bold" id="totalCategoriasActivas">{{ $categoriasActivas }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Categorías Inactivas</p>
-                <h2 class="text-3xl font-bold" id="totalCategoriasInactivas"></h2>
+                <h2 class="text-3xl font-bold" id="totalCategoriasInactivas">{{ $categoriasInactivas }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Órdenes</p>

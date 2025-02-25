@@ -12,7 +12,10 @@ class ProductoController extends Controller
      */
 
     public function mostrarEstadisticasProducto(){
-        return view('admin/productos/estadisticasProducto');
+        $totales = Producto::count();
+        $productosActivos = Producto::where('activo_producto', true)->count();
+        $productosInactivos = Producto::where('activo_producto', false)->count();
+        return view('admin/productos/estadisticasProducto', compact('totales', 'productosActivos', 'productosInactivos'));
     }
 
     public function index()

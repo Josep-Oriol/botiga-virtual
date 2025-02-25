@@ -27,10 +27,12 @@
                     <span class="text-2xl">Usuarios</span>
                 </div>
             </a>
-            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
-                <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-8 h-8">
-                <span class="text-2xl">Pedidos</span>
-            </div>
+            <a href="{{ route('mostrarEstadisticasCompra') }}">
+                <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
+                    <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-8 h-8">
+                    <span class="text-2xl">Compras</span>
+                </div>
+            </a>
             <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="configuracion">
                 <img src="{{ asset('icons/web/settings.svg') }}" alt="Configuración" class="w-8 h-8">
                 <span class="text-2xl">Configuración</span>

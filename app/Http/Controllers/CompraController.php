@@ -10,6 +10,14 @@ class CompraController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function mostrarEstadisticasCompra(){
+        $totales = Compra::count();
+        $comprasActivas = Compra::where('estado_compra', 'progreso')->count();
+        $comprasInactivas = Compra::where('estado_compra', 'completa')->count();
+        return view('admin/compras/estadisticaCompra', compact('totales', 'comprasActivas', 'comprasInactivas'));
+    }
+
     public function index()
     {
         return response()->json(Compra::all());
@@ -20,7 +28,7 @@ class CompraController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/compras/crearCompra');
     }
 
     /**

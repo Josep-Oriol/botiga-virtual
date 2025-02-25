@@ -11,15 +11,15 @@
         <div class="grid grid-cols-4 gap-4 mb-6">
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Usuarios Totales</p>
-                <h2 class="text-3xl font-bold" id="totalUsuarios"></h2>
+                <h2 class="text-3xl font-bold" id="totalUsuarios">{{ $totales }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Usuarios Activos</p>
-                <h2 class="text-3xl font-bold" id="totalUsuariosActivos"></h2>
+                <h2 class="text-3xl font-bold" id="totalUsuariosActivos">{{ $usuariosActivos }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Usuarios Inactivos</p>
-                <h2 class="text-3xl font-bold" id="totalUsuariosInactivos"></h2>
+                <h2 class="text-3xl font-bold" id="totalUsuariosInactivos">{{ $usuariosInactivos }}</h2>
             </div>
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <p class="text-gray-400">Órdenes</p>

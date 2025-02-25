@@ -4,12 +4,11 @@
 
 @section('content')
 
-    <section class="relative bg-gradient-to-r from-custom-dark3 to-custom-dark2 py-20" 
-            style="background-image: url('{{ asset('img/principal.webp') }}'); background-size: cover; background-position: center 20%;">
+    <section class="relative bg-gradient-to-r from-custom-dark3 to-custom-dark2 py-20 bg-cover bg-center" style="background-image: url('{{ asset('img/principal.webp') }}')">
             <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 container mx-auto px-6 lg:px-20 text-left">  
             <h2 class="text-4xl font-bold text-white mb-6">Construye el ordenador de tus sueños</h2>
-            <a href="#" class="bg-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-600">Montar PC</a>
+            <a href="" class="bg-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-600">Montar PC</a>
         </div>
     </section>
 

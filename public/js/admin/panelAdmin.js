@@ -1,8 +1,11 @@
 import { listarProductos } from "../utils/productos.js";
 import { listarCategorias } from "../utils/categorias.js";
+import { listarUsuarios } from "../utils/usuarios.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const listadoProductos = document.getElementById("listadoProductos");
+    const listadoCategorias = document.getElementById("listadoCategorias");
+    const listadoUsuarios = document.getElementById("listadoUsuarios");
 
     if (listadoProductos) {
         console.log("listadoProductos");
@@ -10,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (listadoCategorias) {
         console.log("listadoCategorias");
         listarCategorias();
+    } else if (listadoUsuarios) {
+        console.log("listadoUsuarios");
+        listarUsuarios();
     }
 });
 

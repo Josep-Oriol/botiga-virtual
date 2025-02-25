@@ -1,9 +1,5 @@
 import { asset } from "../admin/panelAdmin.js";
 
-export function contenidoProductos() {
-    listarProductos();
-}
-
 export function setContenidoProductos() {
     const titulo = document.getElementById("titulo");
     titulo.textContent = "Productos";

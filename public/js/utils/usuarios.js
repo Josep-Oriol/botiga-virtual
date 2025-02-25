@@ -1,28 +1,100 @@
-export function setContenidoProductos() {
-    const titulo = document.getElementById("titulo");
-    titulo.textContent = "Productos";
+import { asset } from "../admin/panelAdmin.js";
 
-    const tituloEstadisticas = document.getElementById("tituloEstadisticas");
-    tituloEstadisticas.textContent = "Productos Totales";
+export async function listarUsuarios() {
+    const listaUsuarios = document.getElementById("listadoUsuarios");
+    listaUsuarios.innerHTML = "";
 
-    const tituloActivos = document.getElementById("tituloActivos");
-    tituloActivos.textContent = "Productos Activos";
+    const usuarios = await obtenerUsuarios();
+    //const estadisticas = await obtenerEstadisticas();
 
-    const tituloInactivos = document.getElementById("tituloInactivos");
-    tituloInactivos.textContent = "Productos Inactivos";
+    /*const totalProductos = document.getElementById("totalProductos");
+    totalProductos.textContent = estadisticas.total_productos;
 
-    const tituloPopulares = document.getElementById("tituloPopulares");
-    tituloPopulares.textContent = "Productos Populares";
+    const totalProductosActivos = document.getElementById(
+        "totalProductosActivos"
+    );
+    totalProductosActivos.textContent = estadisticas.productos_activos;
 
-    const tituloListado = document.getElementById("tituloListado");
-    tituloListado.textContent = "Listado de Productos";
+    const totalProductosInactivos = document.getElementById(
+        "totalProductosInactivos"
+    );
+    totalProductosInactivos.textContent = estadisticas.productos_inactivos;*/
 
-    const crear = document.getElementById("crear");
-    crear.innerHTML = "";
-    const plusCrear = document.createElement("img");
-    plusCrear.src = asset("icons/admin/plus.svg");
-    crear.appendChild(plusCrear);
-    crear.innerHTML += "Añadir nuevo producto";
+    for (let usuario of usuarios) {
+        const usuarioDiv = document.createElement("div");
+        usuarioDiv.classList.add(
+            "flex",
+            "justify-between",
+            "items-center",
+            "mt-4",
+            "p-4",
+            "border-gray-700",
+            "rounded-lg",
+            "shadow-md",
+            "bg-custom-dark1",
+            "cursor-default"
+        );
+
+        const divDatos = document.createElement("div");
+        divDatos.classList.add("flex", "gap-4");
+
+        const nombreUsuario = document.createElement("h3");
+        nombreUsuario.textContent = usuario.nombre_usuario;
+
+        const emailUsuario = document.createElement("p");
+        emailUsuario.textContent = usuario.email_usuario;
+        emailUsuario.classList.add("text-primary");
+
+        const estadoUsuario = document.createElement("p");
+
+        if (usuario.activo_usuario) {
+            estadoUsuario.textContent = "Activo";
+            estadoUsuario.classList.add("rounded-md", "bg-green-500");
+        } else {
+            estadoUsuario.textContent = "Inactivo";
+            estadoUsuario.classList.add("rounded-md", "bg-red-500");
+        }
+
+        const divEstado = document.createElement("div");
+        divEstado.classList.add("flex", "gap-4");
+        divEstado.appendChild(estadoUsuario);
+
+        const divIcons = document.createElement("div");
+        divIcons.classList.add("flex", "gap-4", "pr-4");
+
+        const editarUsuario = document.createElement("img");
+        editarUsuario.src = asset("icons/admin/edit.svg");
+        editarUsuario.classList.add("cursor-pointer");
+        editarUsuario.addEventListener("click", () => {
+            window.location.href = `/usuarios/${usuario.id}/edit`;
+        });
+
+        const verUsuario = document.createElement("img");
+        verUsuario.src = asset("icons/admin/eye.svg");
+        verUsuario.classList.add("cursor-pointer");
+        verUsuario.addEventListener("click", () => {
+            window.location.href = `/usuarios/${usuario.id}`;
+        });
+
+        const confirmarEliminarUsuario = document.createElement("img");
+        confirmarEliminarUsuario.src = asset("icons/admin/trash.svg");
+        confirmarEliminarUsuario.classList.add("cursor-pointer");
+        confirmarEliminarUsuario.addEventListener("click", () => {
+            eliminarUsuario(usuario.id);
+        });
+
+        divDatos.appendChild(nombreUsuario);
+        divDatos.appendChild(emailUsuario);
+
+        divIcons.appendChild(editarUsuario);
+        divIcons.appendChild(verUsuario);
+        divIcons.appendChild(confirmarEliminarUsuario);
+
+        usuarioDiv.appendChild(divDatos);
+        divEstado.appendChild(divIcons);
+        usuarioDiv.appendChild(divEstado);
+        listaUsuarios.appendChild(usuarioDiv);
+    }
 }
 
 async function obtenerUsuarios() {
@@ -49,17 +121,4 @@ async function eliminarUsuario(id) {
     } else {
         alert("Error: " + (result.message || "No se pudo eliminar el usuario"));
     }
-}
-
-async function editarUsuario(id) {
-    const usuario = await fetch(`/usuarios/${id}`, {
-        method: "PUT",
-    });
-}
-
-async function registrarUsuario(usuario) {
-    const response = await fetch("/usuarios", {
-        method: "POST",
-        body: JSON.stringify(usuario),
-    });
 }

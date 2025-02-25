@@ -4,33 +4,6 @@ export function contenidoCategorias() {
     listarCategorias();
 }
 
-export function setContenidoCategorias() {
-    const titulo = document.getElementById("titulo");
-    titulo.textContent = "Categorias";
-
-    const tituloEstadisticas = document.getElementById("tituloEstadisticas");
-    tituloEstadisticas.textContent = "Categorias Totales";
-
-    const tituloActivos = document.getElementById("tituloActivos");
-    tituloActivos.textContent = "Categorias Activas";
-
-    const tituloInactivos = document.getElementById("tituloInactivos");
-    tituloInactivos.textContent = "Categorias Inactivas";
-
-    const tituloPopulares = document.getElementById("tituloPopulares");
-    tituloPopulares.textContent = "Categroias Populares";
-
-    const tituloListado = document.getElementById("tituloListado");
-    tituloListado.textContent = "Listado de Categorias";
-
-    const crear = document.getElementById("crear");
-    crear.innerHTML = "";
-    const plusCrear = document.createElement("img");
-    plusCrear.src = asset("icons/admin/plus.svg");
-    crear.appendChild(plusCrear);
-    crear.textContent = "Añadir nueva categoria";
-}
-
 export async function listarCategorias() {
     const listaCategorias = document.getElementById("listadoCategorias");
     listaCategorias.innerHTML = "";
@@ -47,8 +20,7 @@ export async function listarCategorias() {
             "border-gray-700",
             "rounded-lg",
             "shadow-md",
-            "bg-custom-dark1",
-            "cursor-pointer"
+            "bg-custom-dark1"
         );
 
         const divDatos = document.createElement("div");
@@ -63,14 +35,24 @@ export async function listarCategorias() {
 
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "gap-2", "pr-4");
+
         const editarCategoria = document.createElement("img");
         editarCategoria.src = asset("icons/admin/edit.svg");
+        editarCategoria.classList.add("cursor-pointer");
+        editarCategoria.addEventListener("click", () => {
+            window.location.href = `/categorias/${categoria.id}/edit`;
+        });
 
         const verCategoria = document.createElement("img");
         verCategoria.src = asset("icons/admin/eye.svg");
+        verCategoria.classList.add("cursor-pointer");
+        verCategoria.addEventListener("click", () => {
+            window.location.href = `/categorias/${categoria.id}`;
+        });
 
         const confirmarEliminarCategoria = document.createElement("img");
         confirmarEliminarCategoria.src = asset("icons/admin/trash.svg");
+        confirmarEliminarCategoria.classList.add("cursor-pointer");
         confirmarEliminarCategoria.addEventListener("click", () => {
             eliminarCategoria(categoria.id);
         });

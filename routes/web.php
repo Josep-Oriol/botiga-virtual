@@ -23,3 +23,5 @@ Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name
 Route::get('login',[UsuarioController::class, 'mostrarLogin'])->name('mostrarLogin');
 
 Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadisticasProducto'])->name('mostrarEstadisticasProducto');
+Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');
+Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');

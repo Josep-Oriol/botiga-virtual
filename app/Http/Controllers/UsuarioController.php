@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Usuario;
 class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function mostrarEstadisticasUsuario(){
+        return view('admin/usuarios/estadisticaUsuario');
+    }
 
     public function mostrarPanelAdmin(){
         return view('admin/panelAdmin');
@@ -25,7 +28,7 @@ class UsuarioController extends Controller
     
     public function index()
     {
-        //
+        return response()->json(Usuario::all());
     }
 
     /**
@@ -33,7 +36,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('main/login');
+        return view('admin/usuarios/crearUsuario');
     }
 
     /**
@@ -41,7 +44,8 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = Usuario::create($request->all());
+        return redirect()->route('admin.usuarios.index');
     }
 
     /**
@@ -49,7 +53,8 @@ class UsuarioController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        return view('admin/usuarios/verUsuario', compact('usuario'));
     }
 
     /**
@@ -57,7 +62,8 @@ class UsuarioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        return view('admin/usuarios/editarUsuario', compact('usuario'));
     }
 
     /**
@@ -65,7 +71,9 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        $usuario->update($request->all());
+        return redirect()->route('admin.usuarios.index');
     }
 
     /**
@@ -73,6 +81,8 @@ class UsuarioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+        return redirect()->route('admin.usuarios.index');
     }
 }

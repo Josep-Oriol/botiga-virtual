@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
-
+use App\Models\Categoria;
 class ProductoController extends Controller
 {
     /**
@@ -44,7 +44,7 @@ class ProductoController extends Controller
             'activo_producto' => request()->has('activo_producto') ? true : false
         ]);
 
-        return redirect()->route('mostrarPanelAdmin');
+        return redirect()->route('mostrarEstadisticasProducto');
     }
 
     /**
@@ -61,7 +61,9 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        $categorias = Categoria::all();
+        return view("admin/productos/editarProducto", compact("producto", "categorias"));
     }
 
     /**
@@ -69,7 +71,18 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->update([
+            'nombre_producto' => request('nombre_producto'),
+            'descripcion_producto' => request('descripcion_producto'),
+            'codigo_producto' => request('codigo_producto'),
+            'precio_producto' => request('precio_producto'),
+            'stock_producto' => request('stock_producto'),
+            'destacado_producto' => request()->has('destacado_producto') ? true : false,
+            'activo_producto' => request()->has('activo_producto') ? true : false
+        ]);
+
+        return redirect()->route('mostrarEstadisticasProducto');
     }
 
     /**

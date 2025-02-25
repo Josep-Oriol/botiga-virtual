@@ -1,4 +1,4 @@
-@extends('admin.appAdmin')
+@extends('layouts.appAdmin')
 
 @section('title', 'Crear Producto')
 

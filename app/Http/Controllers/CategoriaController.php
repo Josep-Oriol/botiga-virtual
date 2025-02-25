@@ -10,6 +10,11 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function mostrarEstadisticasCategoria(){
+        return view('admin/categorias/estadisticaCategoria');
+    }
+
     public function index()
     {
         return response()->json(Categoria::all());
@@ -18,13 +23,11 @@ class CategoriaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function mostrarFormularioCategoria(){
-        return view('admin/crearCategoria');
-    }
+
 
     public function create()
     {
-        return view('categorias/crearCategoria');
+        return view('admin/categorias/crearCategoria');
     }
 
     /**
@@ -36,7 +39,12 @@ class CategoriaController extends Controller
         Categoria::create([
             'nombre_categoria' =>request('nombre_categoria'),
             'codigo_categoria' =>request('codigo_categoria'),
+            'descripcion_categoria' => request('descripcion_categoria'),
+            'imagen_categoria' => request()->has('imagen_categoria') ? request('imagen_categoria') : null,
+            'activo_categoria' => request()->has('activo_categoria') ? true : false
         ]);
+
+        return redirect()->route('mostrarEstadisticasCategoria');
        /*go_categoria' => request('codigo_categoria')
         ]);
         
@@ -48,7 +56,8 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view("admin/categorias/verCategoria", compact("categoria"));
     }
 
     /**
@@ -56,7 +65,8 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view("admin/categorias/editarCategoria", compact("categoria"));
     }
 
     /**
@@ -64,7 +74,16 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->update([
+            'nombre_categoria' => request('nombre_categoria'),
+            'codigo_categoria' => request('codigo_categoria'),
+            'descripcion_categoria' => request('descripcion_categoria'),
+            'imagen_categoria' => request()->has('imagen_categoria') ? request('imagen_categoria') : null,
+            'activo_categoria' => request()->has('activo_categoria') ? true : false
+        ]);
+
+        return redirect()->route('mostrarEstadisticasCategoria');
     }
 
     /**

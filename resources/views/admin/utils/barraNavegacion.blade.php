@@ -9,20 +9,24 @@
                 <img src="{{ asset('icons/web/estats.svg') }}" alt="Estadísticas" class="w-8 h-8">
                 <span class="text-2xl">Estadísticas</span>
             </div>
-            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
-                <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-8 h-8">
-                <span class="text-2xl">Categorías</span>
-            </div>
+            <a href="{{ route('mostrarEstadisticasCategoria') }}">
+                <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
+                    <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-8 h-8">
+                    <span class="text-2xl">Categorías</span>
+                </div>
+            </a>
             <a href="{{ route('mostrarEstadisticasProducto') }}">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="productos">
                     <img src="{{ asset('icons/web/packages.svg') }}" alt="Productos" class="w-8 h-8">
                     <span class="text-2xl">Productos</span>
                 </div>
             </a>
-            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="usuarios">
-                <img src="{{ asset('icons/web/users.svg') }}" alt="Usuarios" class="w-8 h-8">
-                <span class="text-2xl">Usuarios</span>
-            </div>
+            <a href="{{ route('mostrarEstadisticasUsuario') }}">
+                <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="usuarios">
+                    <img src="{{ asset('icons/web/users.svg') }}" alt="Usuarios" class="w-8 h-8">
+                    <span class="text-2xl">Usuarios</span>
+                </div>
+            </a>
             <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
                 <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-8 h-8">
                 <span class="text-2xl">Pedidos</span>

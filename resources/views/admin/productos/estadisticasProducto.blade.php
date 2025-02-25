@@ -65,7 +65,7 @@
                         <option value="activo">Activos</option>
                         <option value="inactivo">Inactivos</option>
                     </select>
-                    <a href="" class="bg-custom-dark2 text-white p-2 rounded flex items-center gap-2">
+                    <a href="{{ route('productos.create') }}" class="bg-custom-dark2 text-white p-2 rounded flex items-center gap-2">
                         <img src="{{ asset('icons/admin/plus.svg') }}" alt="Añadir producto" class="w-6 h-6">
                         <span>Añadir producto</span>
                     </a>

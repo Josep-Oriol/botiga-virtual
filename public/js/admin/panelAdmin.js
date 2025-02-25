@@ -1,48 +1,15 @@
-import {
-    contenidoProductos,
-    setContenidoProductos,
-} from "../utils/productos.js";
-
-import {
-    contenidoCategorias,
-    setContenidoCategorias,
-} from "../utils/categorias.js";
-
-export const content = document.querySelector(".content");
-
-export const crear = document.getElementById("crear");
+import { listarProductos } from "../utils/productos.js";
+import { listarCategorias } from "../utils/categorias.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const adminNavItems = document.querySelectorAll(".admin-nav-item");
+    const listadoProductos = document.getElementById("listadoProductos");
 
-    if (crear) {
-        crear.addEventListener("click", () => {
-            popupCrearProducto();
-        });
-    }
-
-    adminNavItems.forEach((item) => {
-        item.addEventListener("click", () => {
-            loadContent(item);
-        });
-    });
-
-    function loadContent(element) {
-        let contentId = element.id;
-
-        switch (contentId) {
-            case "estats":
-                content.innerHTML = "";
-                break;
-            case "categorias":
-                setContenidoCategorias();
-                contenidoCategorias();
-                break;
-            case "productos":
-                setContenidoProductos();
-                contenidoProductos();
-                break;
-        }
+    if (listadoProductos) {
+        console.log("listadoProductos");
+        listarProductos();
+    } else if (listadoCategorias) {
+        console.log("listadoCategorias");
+        listarCategorias();
     }
 });
 

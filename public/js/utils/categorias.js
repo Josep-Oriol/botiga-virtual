@@ -31,8 +31,8 @@ export function setContenidoCategorias() {
     crear.textContent = "Añadir nueva categoria";
 }
 
-async function listarCategorias() {
-    const listaCategorias = document.getElementById("tabla");
+export async function listarCategorias() {
+    const listaCategorias = document.getElementById("listadoCategorias");
     listaCategorias.innerHTML = "";
     const categorias = await obtenerCategorias();
 

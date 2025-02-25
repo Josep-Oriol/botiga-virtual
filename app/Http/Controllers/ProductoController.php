@@ -10,8 +10,9 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function mostrarFormularioProducto(){
-        return view('admin/crearProducto');
+
+    public function mostrarEstadisticasProducto(){
+        return view('admin/productos/estadisticasProducto');
     }
 
     public function index()
@@ -24,7 +25,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/productos/crearProducto');
     }
 
     /**
@@ -51,7 +52,8 @@ class ProductoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        return view("admin/productos/verProducto", compact("producto"));
     }
 
     /**

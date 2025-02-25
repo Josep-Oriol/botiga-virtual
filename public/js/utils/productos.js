@@ -31,8 +31,8 @@ export function setContenidoProductos() {
     crear.innerHTML += "Añadir nuevo producto";
 }
 
-async function listarProductos() {
-    const listaProductos = document.getElementById("tabla");
+export async function listarProductos() {
+    const listaProductos = document.getElementById("listadoProductos");
     listaProductos.innerHTML = "";
 
     const productos = await obtenerProductos();

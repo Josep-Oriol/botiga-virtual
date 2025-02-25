@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('logos/favicon.ico') }}" type="image/x-icon">
-    <meta name="asset-url" content="{{ asset('') }}">
     <title>@yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script type="module" src="{{asset('js/admin/panelAdmin.js')}}"></script>
+    <meta name="asset-url" content="{{ asset('') }}">
 </head>
-<body class="bg-custom-dark1 text-white">
+<body class="bg-custom-dark1 text-white overflow-hidden">
 
-    <!--@include('utils.header')-->
+    <div class="flex h-screen">
+        @include('admin.utils.barraNavegacion') 
 
-    <main class="min-h-screen">
-        @yield('content')
-    </main>
-
-    <!--@include('utils.footer')-->
+        <main class="flex-1 min-h-screen p-6 overflow-y-auto">
+            @yield('content')
+        </main>
+    </div>
 
 </body>
 </html>

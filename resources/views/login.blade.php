@@ -5,7 +5,9 @@
 @section('content')
 
 <div class="flex justify-center items-center h-screen flex-col">
-  <img src="{{asset('logos/logo_grande.webp')}}" alt="">
+    <a href="{{ route('main') }}">
+        <img src="{{asset('logos/logo_grande.webp')}}" alt="">
+    </a>
   <div class="bg-custom-dark3 rounded-lg w-full max-w-md p-6 shadow-lg">
     <form method="POST" action="#">
         @csrf
@@ -59,7 +61,7 @@
     <div class="text-center mt-6">
         <p class="text-white text-sm">
             ¿No tienes una cuenta? 
-            <a href="#" class="text-secondary font-medium hover:underline">
+            <a href="{{ route('register') }}" class="text-secondary font-medium hover:underline">
                 Regístrate ahora
             </a>
         </p>

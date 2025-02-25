@@ -21,6 +21,7 @@ Route::resources([
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
 Route::get('login',[UsuarioController::class, 'mostrarLogin'])->name('mostrarLogin');
+Route::get('register',[UsuarioController::class,'mostrarRegister'])->name('register');
 
 Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadisticasProducto'])->name('mostrarEstadisticasProducto');
 Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');

@@ -25,6 +25,14 @@ class UsuarioController extends Controller
     {
         return view('main/login');
     }
+
+    public function register(){
+        return view('register');
+    }
+
+    public function mostrarRegister(){
+        return view('register');
+    }
     
     public function index()
     {

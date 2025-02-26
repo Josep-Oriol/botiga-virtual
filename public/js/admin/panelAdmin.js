@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const listadoProductos = document.getElementById("listadoProductos");
     const listadoCategorias = document.getElementById("listadoCategorias");
     const listadoUsuarios = document.getElementById("listadoUsuarios");
+    const listadoCompras = document.getElementById("listadoCompras");
 
     if (listadoProductos) {
         console.log("listadoProductos");

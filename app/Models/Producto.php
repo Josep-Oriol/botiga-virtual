@@ -24,6 +24,12 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class, 'fk_id_categoria');
     }
 
+    public function caracteristicas()
+    {
+        return $this->belongsToMany(Caracteristica::class, 'caracteristicas_producto')
+                    ->withPivot('valor');
+    }
+
     /*public function fotos ()
     {
         return $this->hasMany(Foto::class, 'fk_id_producto');

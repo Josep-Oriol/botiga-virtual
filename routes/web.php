@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\MarcaController;
-
+use App\Http\Controllers\EstadisticaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +16,8 @@ Route::resources([
     "categorias" => CategoriaController::class,
     "productos" => ProductoController::class,
     "usuarios" => UsuarioController::class,
-    "compras" => CompraController::class
+    "compras" => CompraController::class,
+    "estadisticas" => EstadisticaController::class
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
@@ -27,3 +28,4 @@ Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadis
 Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');
 Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');
 Route::get('pedidos-estadisticas', [CompraController::class, 'mostrarEstadisticasCompra'])->name('mostrarEstadisticasCompra');
+Route::get('estadisticas', [EstadisticaController::class, 'mostrarEstadisticas'])->name('mostrarEstadisticas');

@@ -5,38 +5,42 @@
                 <img src="{{ asset('logos/logo.webp') }}" alt="Logo" class="w-12 h-12">
                 <span class="text-2xl">Dashboard</span>
             </div>
-            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="estats">
-                <img src="{{ asset('icons/web/estats.svg') }}" alt="Estadísticas" class="w-8 h-8">
-                <span class="text-2xl">Estadísticas</span>
-            </div>
-            <a href="{{ route('mostrarEstadisticasCategoria') }}">
+            <a href="{{ route('mostrarEstadisticas') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
+                <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="estats">
+                    <img src="{{ asset('icons/web/estats.svg') }}" alt="Estadísticas" class="w-8 h-8">
+                    <span class="text-2xl">Estadísticas</span>
+                </div>
+            </a>
+            <a href="{{ route('mostrarEstadisticasCategoria') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
                     <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-8 h-8">
                     <span class="text-2xl">Categorías</span>
                 </div>
             </a>
-            <a href="{{ route('mostrarEstadisticasProducto') }}">
+            <a href="{{ route('mostrarEstadisticasProducto') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="productos">
                     <img src="{{ asset('icons/web/packages.svg') }}" alt="Productos" class="w-8 h-8">
                     <span class="text-2xl">Productos</span>
                 </div>
             </a>
-            <a href="{{ route('mostrarEstadisticasUsuario') }}">
+            <a href="{{ route('mostrarEstadisticasUsuario') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="usuarios">
                     <img src="{{ asset('icons/web/users.svg') }}" alt="Usuarios" class="w-8 h-8">
                     <span class="text-2xl">Usuarios</span>
                 </div>
             </a>
-            <a href="{{ route('mostrarEstadisticasCompra') }}">
+            <a href="{{ route('mostrarEstadisticasCompra') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="pedidos">
                     <img src="{{ asset('icons/web/truck.svg') }}" alt="Pedidos" class="w-8 h-8">
                     <span class="text-2xl">Compras</span>
                 </div>
             </a>
-            <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="configuracion">
-                <img src="{{ asset('icons/web/settings.svg') }}" alt="Configuración" class="w-8 h-8">
-                <span class="text-2xl">Configuración</span>
-            </div>
+            <!--<a href="" class="hover:bg-custom-dark2 rounded-xl p-2">
+                <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="configuracion">
+                    <img src="{{ asset('icons/web/settings.svg') }}" alt="Configuración" class="w-8 h-8">
+                    <span class="text-2xl">Configuración</span>
+                </div>
+            </a>-->
         </div>
     </div>
     <div class="flex items-center justify-center space-x-2 cursor-pointer text-gray-300 hover:text-white mb-4 admin-nav-item" id="logout">

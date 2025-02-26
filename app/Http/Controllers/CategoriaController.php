@@ -16,7 +16,7 @@ class CategoriaController extends Controller
         $categoriasActivas = Categoria::where('activo_categoria', true)->count();
         $categoriasInactivas = Categoria::where('activo_categoria', false)->count();
         //$populares = Categoria::orderBy(Categoria::with('productos')->count(), 'desc')->take(3)->get();
-        return view('admin/categorias/estadisticaCategoria', compact('totales', 'categoriasActivas', 'categoriasInactivas', 'populares'));
+        return view('admin/categorias/estadisticaCategoria', compact('totales', 'categoriasActivas', 'categoriasInactivas'));
     }
 
     public function index()

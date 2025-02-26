@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\Caracteristica;
+
 class ProductoController extends Controller
 {
     /**
@@ -16,6 +18,10 @@ class ProductoController extends Controller
         $productosActivos = Producto::where('activo_producto', true)->count();
         $productosInactivos = Producto::where('activo_producto', false)->count();
         return view('admin/productos/estadisticasProducto', compact('totales', 'productosActivos', 'productosInactivos'));
+    }
+
+    public function caracteristicasProducto(){
+        return response()->json(Caracteristica::all());
     }
 
     public function index()

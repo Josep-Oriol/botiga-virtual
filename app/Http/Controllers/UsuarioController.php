@@ -81,9 +81,17 @@ class UsuarioController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+
+        $validated = $request->validate([
+            'nombre_usuario' => 'required|string|max:255',
+            'email_usuario' => 'required|email|unique:usuarios,email_usuario,' . $id,
+            'password_usuario' => 'required|string|min:8',
+            'activo_usuario' => 'required|boolean',
+        ]);
+
         $usuario = Usuario::find($id);
-        $usuario->update($request->all());
+        $usuario->update($validated);
         return redirect()->route('admin.usuarios.index');
     }
 

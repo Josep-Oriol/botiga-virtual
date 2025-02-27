@@ -9,14 +9,16 @@ class Producto extends Model
     protected $table = 'productos';
 
     protected $fillable = [
+        'foto_portada_producto',
         'nombre_producto',
         'descripcion_producto',
         'codigo_producto',
         'fk_id_categoria',
+        'fk_id_marca',
         'precio_producto',
         'stock_producto',
         'destacado_producto',
-        'foto_portada_producto'
+        'activo_producto'
     ];
 
     public function categoria()
@@ -28,6 +30,11 @@ class Producto extends Model
     {
         return $this->belongsToMany(Caracteristica::class, 'caracteristicas_producto')
                     ->withPivot('valor');
+    }
+
+    public function marca()
+    {
+        return $this->belongsTo(Marca::class, 'fk_id_marca');
     }
 
     /*public function fotos ()

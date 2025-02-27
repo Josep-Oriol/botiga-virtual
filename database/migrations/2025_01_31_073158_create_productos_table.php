@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
+            $table->string('foto_portada_producto')->nullable();
             $table->string('nombre_producto');
             $table->text('descripcion_producto')->nullable();
             $table->string('codigo_producto')->unique();
@@ -21,7 +22,6 @@ return new class extends Migration
             $table->decimal('precio_producto', 8, 2);
             $table->bigInteger('stock_producto');
             $table->boolean('destacado_producto')->default(false);
-            $table->string('foto_portada_producto')->nullable();
             $table->boolean('activo_producto')->default(true);
             $table->timestamps();
 

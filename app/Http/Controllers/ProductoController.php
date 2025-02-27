@@ -41,19 +41,40 @@ class ProductoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   
-        
-        Producto::create([
-            'nombre_producto' => request('nombre_producto'),
-            'descripcion_producto' => request('descripcion_producto'),
-            'codigo_producto' => request('codigo_producto'),
-            'precio_producto' => request('precio_producto'),
-            'stock_producto' => request('stock_producto'),
-            'destacado_producto' => request()->has('destacado_producto') ? true : false,
-            'activo_producto' => request()->has('activo_producto') ? true : false
+    {  
+        $request->validate([
+            'foto_portada_producto' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:4096',
+            'nombre_producto' => 'required|string|max:255',
+            'descripcion_producto' => 'required|string',
+            'codigo_producto' => 'required|string|max:255',
+            'fk_id_categoria' => 'required|exists:categorias,id',
+            'fk_id_marca' => 'required|exists:marcas,id',
+            'precio_producto' => 'required|numeric|min:0',
+            'stock_producto' => 'required|integer|min:0',
+            'destacado_producto' => 'required|boolean',
+            'activo_producto' => 'required|boolean',
         ]);
 
-        return redirect()->route('mostrarEstadisticasProducto');
+        $rutaImagen = null;
+        if ($request->hasFile('foto_portada_producto')) {
+            $rutaImagen = $request->file('foto_portada_producto')->store('productos', 'public');  
+        }
+
+        Producto::create([
+            'foto_portada_producto' => $rutaImagen,
+            'nombre_producto' => $request->input('nombre_producto'),
+            'descripcion_producto' => $request->input('descripcion_producto'),
+            'codigo_producto' => $request->input('codigo_producto'),
+            'fk_id_categoria' => $request->input('fk_id_categoria'),
+            'fk_id_marca' => $request->input('fk_id_marca'),
+            'precio_producto' => $request->input('precio_producto'),
+            'stock_producto' => $request->input('stock_producto'),
+            'destacado_producto' => $request->boolean('destacado_producto'),
+            'activo_producto' => $request->boolean('activo_producto'),
+        ]);
+
+        return redirect()->route('mostrarEstadisticasProducto')->with('success', 'Producto creado con éxito');
+
     }
 
     /**

@@ -3,7 +3,7 @@
 @section('title', 'Editar Producto')
 
 @section('content')
-    <form action="{{ route ('productos.update', $producto->id) }}" method="POST">
+    <form action="{{ route ('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <label for="nombre_producto">Nombre producto</label><br>

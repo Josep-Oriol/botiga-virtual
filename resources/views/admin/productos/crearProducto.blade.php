@@ -6,10 +6,13 @@
     <div class="flex flex-col gap-4">
         <h1 class="text-3xl font-bold">Crear Producto</h1>
         <div class="flex flex-col gap-4">
-            <form action="{{ route ('productos.store') }}" method="POST" class="flex flex-col gap-4">
+            <form action="{{ route ('productos.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
                 @csrf
                 <div class="flex gap-4 border-2 border-gray-400 rounded-md p-4 bg-custom-dark3">
                     <h2 class="text-2xl font-bold">Datos del principales del producto</h2>
+                    <div class="flex gap-4">
+                        <input type="file" name="foto_portada_producto" id="foto_portada_producto">
+                    </div>
                     <div>
                         <div class="flex flex-col gap-2 w-[50%]">
                             <label for="nombre_producto">Nombre producto</label>

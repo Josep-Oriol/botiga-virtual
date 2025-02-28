@@ -24,7 +24,7 @@
                 <button class="bg-custom-dark3 text-white px-4 py-2 rounded-md hover:bg-custom-dark2 transition-all duration-300" id="aumentar-cantidad-carrito">+</button>
             </div>
             <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-300">Comprar</button>
-            <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-300">Añadir al carrito</button>
+            <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-300" value="{{ $producto }}" id="añadir-al-carrito">Añadir al carrito</button>
         </div>
     </div>
     <div class="flex flex-row gap-4">

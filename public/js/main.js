@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     const productosDestacados = document.getElementById("productosDestacados");
 
-    mostrarCategoriasDestacadas(categoriasDestacadasDiv);
-    mostrarProductosDestacados(productosDestacados);
+    //mostrarCategoriasDestacadas(categoriasDestacadasDiv);
+    //mostrarProductosDestacados(productosDestacados);
 });
 
-async function mostrarCategoriasDestacadas(container) {
+/*async function mostrarCategoriasDestacadas(container) {
     const categorias = await categoriasDestacadas();
     for (const categoria of categorias) {
         container.innerHTML += `
@@ -21,9 +21,9 @@ async function mostrarCategoriasDestacadas(container) {
             <h3>${categoria.nombre_categoria}</h3>
         </div>`;
     }
-}
+}*/
 
-async function mostrarProductosDestacados(container) {
+/*async function mostrarProductosDestacados(container) {
     container.className = "flex gap-6 w-full";
 
     const productos = await productosDestacados();
@@ -75,4 +75,4 @@ async function mostrarProductosDestacados(container) {
 
         container.appendChild(productDiv);
     }
-}
+}*/

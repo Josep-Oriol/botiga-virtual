@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     aumentarCantidadCarrito.addEventListener("click", async function () {
         const cantidad = parseInt(cantidadCarritoValor.textContent);
-        const stock = await comprobarStock(idProducto);
+        const stock = await comprobarStock(idProducto, cantidad);
         if (stock) {
             cantidadCarritoValor.textContent = cantidad + 1;
         } else {
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-async function comprobarStock(id) {
-    const response = await fetch(`/comprobar-stock/${id}`);
+async function comprobarStock(id, cantidad) {
+    const response = await fetch(`/comprobar-stock/${id}${cantidad}`);
     const data = await response.json();
     return data;
 }

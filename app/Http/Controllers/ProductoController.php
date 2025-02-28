@@ -13,9 +13,24 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function comprobarStock($id){
+
+    public function main(){
+        $productosDestacados = Producto::where('destacado_producto', true)
+                                        ->where('activo_producto', true)
+                                        ->where('stock_producto', '>', 0)
+                                        ->limit(5)->get();
+
+        $categoriasDestacadas = Categoria::where('activo_categoria', true)
+                                ->where('destacada_categoria', true)
+                                ->get();
+
+        return view('main', compact('productosDestacados', 'categoriasDestacadas'));
+    }
+
+    public function comprobarStock($id, $cantidad){
+        
         $producto = Producto::find($id);
-        if ($producto->stock_producto > 0) {
+        if ($producto->stock_producto >= $cantidad) {
             return response()->json(true);
         } else {
             return response()->json(false);

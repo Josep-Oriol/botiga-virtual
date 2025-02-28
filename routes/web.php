@@ -7,18 +7,18 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\BuscadorController;
+use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main');
-})->name('main');
+Route::get('/', [ProductoController::class, 'main'])->name('main');
 
 Route::resources([
     "categorias" => CategoriaController::class,
     "productos" => ProductoController::class,
     "usuarios" => UsuarioController::class,
     "compras" => CompraController::class,
-    "estadisticas" => EstadisticaController::class
+    "estadisticas" => EstadisticaController::class,
+    "carrito" => CarritoController::class
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');

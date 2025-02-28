@@ -10,6 +10,16 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function categoriasDestacadas(){
+        $categoriasDestacadas = Categoria::where('destacada_categoria', true)->where('activo_categoria', true)->get();
+        return response()->json($categoriasDestacadas);
+    }
+
+    public function buscarCategoria(Request $request){
+        $nombre = $request->input('nombre');
+        $categorias = Categoria::where('nombre_categoria', 'LIKE', "%$nombre%")->get();
+        return response()->json($categorias);
+    }
 
     public function mostrarEstadisticasCategoria(){
         $totales = Categoria::count();

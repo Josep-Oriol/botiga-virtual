@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\EstadisticaController;
+use App\Http\Controllers\BuscadorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,3 +30,10 @@ Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstad
 Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');
 Route::get('pedidos-estadisticas', [CompraController::class, 'mostrarEstadisticasCompra'])->name('mostrarEstadisticasCompra');
 Route::get('estadisticas', [EstadisticaController::class, 'mostrarEstadisticas'])->name('mostrarEstadisticas');
+
+Route::get('productos-destacados', [ProductoController::class, 'productosDestacados'])->name('productosDestacados');
+Route::get('categorias-destacadas', [CategoriaController::class, 'categoriasDestacadas'])->name('categoriasDestacadas');
+
+Route::get('productos-buscar', [BuscadorController::class, 'buscarProducto'])->name('productos.buscar');
+Route::get('ver-producto/{id}', [ProductoController::class, 'verProducto'])->name('verProducto');
+Route::get('ver-productos', [ProductoController::class, 'verProductos'])->name('verProductos');

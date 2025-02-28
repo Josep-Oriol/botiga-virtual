@@ -30,3 +30,17 @@ export function asset(path) {
         .getAttribute("content");
     return baseUrl + path;
 }
+
+export function route(path, params = {}) {
+    const baseUrl = document
+        .querySelector('meta[name="base-url"]')
+        .getAttribute("content");
+
+    let url = baseUrl + "/" + path;
+
+    Object.keys(params).forEach((key) => {
+        url = url.replace(`:${key}`, params[key]);
+    });
+
+    return url;
+}

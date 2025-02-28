@@ -165,3 +165,15 @@ async function obtenerEstadisticas() {
     return Array.isArray(data) ? data : [];
     //return data;
 }
+
+export async function buscarProducto(nombre) {
+    const productos = await fetch(`/productos-buscar?nombre=${nombre}`);
+    const data = await productos.json();
+    return Array.isArray(data) ? data : [];
+}
+
+export async function productosDestacados() {
+    const productos = await fetch(`/productos-destacados`);
+    const data = await productos.json();
+    return Array.isArray(data) ? data : [];
+}

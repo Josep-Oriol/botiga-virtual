@@ -13,20 +13,20 @@
     </section>
 
 
-    <section class="py-16">
+    <section class="py-8">
         <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-white text-center mb-8">Categorías</h2>
-            <div class="grid grid-cols-4 gap-6"></div>
+            <h2 class="text-2xl font-bold text-white text-center mb-8">Categorías destacadas</h2>
+            <div class="flex justify-center gap-6 items-center" id="categoriasDestacadas"></div>
         </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-8">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-2xl font-bold text-white">Productos Destacados</h2>
-                <a href="#" class="text-primary hover:text-pink-400">Ver todos</a>
+                <a href="{{ route('verProductos') }}" class="text-primary hover:text-pink-400">Ver todos</a>
             </div>
-            <div class="grid grid-cols-4 gap-6"></div>
+            <div id="productosDestacados"></div>
         </div>
     </section>
 
@@ -51,5 +51,5 @@
             </div>
         </div>
     </section>
-
+    <script type="module" src="{{ asset('js/main.js') }}"></script>
 @endsection

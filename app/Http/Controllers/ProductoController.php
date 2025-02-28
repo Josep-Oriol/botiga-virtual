@@ -6,12 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
 use App\Models\Caracteristica;
+use App\Models\Marca;
 
 class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    public function verProductos(){
+        $productos = Producto::where('activo_producto', true)->where('stock_producto', '>', 0)->get();
+        $categorias = Categoria::all()->where('activo_categoria', true);
+        $marcas = Marca::all()->where('activo_marca', true);
+        return view('clients/verProductos', compact('productos', 'categorias', 'marcas'));
+    }
+
+    public function verProducto($id){
+        $producto = Producto::find($id);
+        return view('clients/verProducto', compact('producto'));
+    }
+
+    public function productosDestacados(){
+        $productosDestacados = Producto::where('destacado_producto', true)->limit(5)->get();
+        return response()->json($productosDestacados);
+     }
 
     public function mostrarEstadisticasProducto(){
         $totales = Producto::count();

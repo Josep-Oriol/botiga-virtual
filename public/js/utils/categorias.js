@@ -99,3 +99,15 @@ async function eliminarCategoria(id) {
         );
     }
 }
+
+export async function buscarCategoria(nombre) {
+    const categorias = await fetch(`/categorias-buscar?nombre=${nombre}`);
+    const data = await categorias.json();
+    return Array.isArray(data) ? data : [];
+}
+
+export async function categoriasDestacadas() {
+    const categorias = await fetch(`/categorias-destacadas`);
+    const data = await categorias.json();
+    return Array.isArray(data) ? data : [];
+}

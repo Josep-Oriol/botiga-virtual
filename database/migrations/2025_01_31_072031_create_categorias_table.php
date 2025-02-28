@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('activo_categoria')->default(true);
             $table->string('descripcion_categoria')->nullable();
             $table->string('imagen_categoria')->nullable();
+            $table->boolean('destacada_categoria')->default(false);
             $table->timestamps();
         });
     }

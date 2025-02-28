@@ -13,7 +13,15 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
-
+    public function comprobarStock($id){
+        $producto = Producto::find($id);
+        if ($producto->stock_producto > 0) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
+    }
+    
     public function verProductos(){
         $productos = Producto::where('activo_producto', true)->where('stock_producto', '>', 0)->get();
         $categorias = Categoria::all()->where('activo_categoria', true);

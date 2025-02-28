@@ -37,3 +37,4 @@ Route::get('categorias-destacadas', [CategoriaController::class, 'categoriasDest
 Route::get('productos-buscar', [BuscadorController::class, 'buscarProducto'])->name('productos.buscar');
 Route::get('ver-producto/{id}', [ProductoController::class, 'verProducto'])->name('verProducto');
 Route::get('ver-productos', [ProductoController::class, 'verProductos'])->name('verProductos');
+Route::get('comprobar-stock/{id}', [ProductoController::class, 'comprobarStock'])->name('comprobarStock');

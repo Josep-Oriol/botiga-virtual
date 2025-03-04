@@ -1,11 +1,10 @@
-<header class="flex justify-between items-center bg-custom-dark1 border-b border-gray-800 py-4">     
-    <div class="text-2xl font-bold text-primary flex items-center space-x-2 mx-8">
+<header class="flex flex-wrap justify-between items-center bg-custom-dark1 border-b border-gray-800 py-4 px-4 md:px-8">     
+    <div class="text-2xl font-bold text-primary flex items-center space-x-2">
         <a href="{{ route('main') }}">
             <img src="{{ asset('logos/logo_misma_linea.webp') }}" alt="PC Markt Logo" class="h-8 w-auto">
         </a>
     </div>
-    <nav class="flex justify-between items-center space-x-6 text-gray-300">
-        
+    <nav class="flex flex-1 justify-between items-center space-x-4 md:space-x-6 text-gray-300">
         <a href="#" class="flex items-center space-x-2 hover:text-white">
             <svg class="w-6 h-6 text-gray-300 stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <line x1="3" y1="6" x2="21" y2="6" stroke-linecap="round"/>
@@ -15,16 +14,16 @@
             <span class="text-gray-300 text-lg">Categorías</span>
         </a>
 
-        <div class="relative">
-            <input type="text" placeholder="Buscar..." class="bg-custom-dark2 text-white p-2 rounded-lg pl-10 focus:outline-none" id="buscarProducto" name="nombre" autocomplete="off">
+        <div class="relative flex-1 max-w-lg">
+            <input type="text" placeholder="Buscar..." class="bg-custom-dark2 text-white p-2 rounded-lg pl-10 w-full focus:outline-none" id="buscarProducto" name="nombre" autocomplete="off">
             <img src="{{ asset('icons/web/search.svg') }}" alt="Buscar" class="w-6 h-6 absolute left-2 top-1/2 transform -translate-y-1/2">
             <div id="resultadosBusqueda" class="absolute top-full left-0 w-full bg-custom-dark2 z-10 p-2 hidden"></div>
         </div>
 
-        <div class="flex items-center space-x-2 px-8 gap-8">
+        <div class="flex items-center space-x-4 md:space-x-8">
             <a href="{{ route('mostrarEstadisticas') }}" class="flex items-center space-x-2 hover:text-white">
                 <svg class="w-6 h-6 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
+                    <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
                 </svg>
                 <span>Mi cuenta</span>
             </a>
@@ -47,5 +46,6 @@
         </div>
     </nav>
 </header>
+
 <script type="module" src="{{ asset('js/header/buscador.js') }}"></script>
 <script type="module" src="{{ asset('js/header/carrito.js') }}"></script>

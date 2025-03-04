@@ -1,3 +1,5 @@
+import { asset } from "../../utils/asset.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOMContentLoaded carrito");
     const carritoProductos = document.getElementById("carritoProductos");
@@ -57,9 +59,9 @@ function mostrarCarrito(carritoProductos) {
                     <div class="flex justify-end">
                         <button class="bg-custom-dark3 text-red-500 p-2 rounded-md flex w-fit hover:underline" id="eliminar-producto" value="${producto.id}">Eliminar</button>
                     </div>
-                    <div class="flex justify-end gap-2">
+                    <div class="flex justify-end  items-center gap-2">
                         <button class="bg-custom-dark3 text-primary p-2 rounded-md flex w-fit hover:underline" id="aumentar-cantidad-carrito" value="${producto.id}">+</button>
-                        <p class="text-primary font-bold text-right px-2">${producto.cantidad_producto}</p>
+                        <p class="text-primary font-bold text-right px-2"></p>
                         <button class="bg-custom-dark3 text-primary p-2 rounded-md flex w-fit hover:underline" id="disminuir-cantidad-carrito" value="${producto.id}">-</button>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('void')
+@extends('layouts.void')
 
 @section('title', 'Login')
 

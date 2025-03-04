@@ -13,13 +13,13 @@
             </a>
             <a href="{{ route('mostrarEstadisticasCategoria') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="categorias">
-                    <img src="{{ asset('icons/web/category.svg') }}" alt="Categorías" class="w-8 h-8">
+                <img src="{{ asset('icons/web/category.svg') }}" alt="Configuración" class="w-8 h-8">
                     <span class="text-2xl">Categorías</span>
                 </div>
             </a>
             <a href="{{ route('mostrarEstadisticasProducto') }}" class="hover:bg-custom-dark2 rounded-xl p-2">
                 <div class="flex items-center space-x-2 cursor-pointer text-gray-300 hover:text-white admin-nav-item" id="productos">
-                    <img src="{{ asset('icons/web/packages.svg') }}" alt="Productos" class="w-8 h-8">
+                <img src="{{ asset('icons/web/packages.svg') }}" alt="Configuración" class="w-8 h-8">
                     <span class="text-2xl">Productos</span>
                 </div>
             </a>
@@ -44,7 +44,9 @@
         </div>
     </div>
     <div class="flex items-center justify-center space-x-2 cursor-pointer text-gray-300 hover:text-white mb-4 admin-nav-item" id="logout">
-        <img src="{{ asset('icons/web/logout.svg') }}" alt="Logout" class="w-6 h-6">
-        <span class="text-xl">Salir</span>
+        <a href="{{ route('main') }}"> 
+            <img src="{{ asset('icons/web/logout.svg') }}" alt="Logout" class="w-6 h-6"><span class="text-xl">Salir</span>
+            
+        </a>
     </div>
 </aside>

@@ -1,8 +1,10 @@
 <footer class="bg-custom-dark1 border-t border-gray-800 py-12">
     <div class="container mx-auto px-4 grid grid-cols-3 gap-8">
-        <div>
-            <p class="text-2xl font-bold text-primary mb-4">&lt;PC MARKT/&gt;</p>
-        </div>
+    <div class="text-2xl font-bold text-primary flex items-center space-x-2">
+        <a href="{{ route('main') }}">
+            <img src="{{ asset('logos/logo_misma_linea.webp') }}" alt="PC Markt Logo" class="h-8 w-auto">
+        </a>
+    </div>
         <div>
             <p class="font-semibold text-white mb-4">Enlaces</p>
             <ul class="space-y-2 text-gray-400">

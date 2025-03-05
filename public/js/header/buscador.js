@@ -4,6 +4,9 @@ import { route } from "../admin/panelAdmin.js";
 document.addEventListener("DOMContentLoaded", function () {
     const buscador = document.getElementById("buscarProducto");
     const resultadosBusqueda = document.getElementById("resultadosBusqueda");
+    const filtrosVerProductos = document.getElementById(
+        "filtros-ver-productos"
+    );
 
     buscador.addEventListener("input", function () {
         const query = buscador.value;
@@ -32,7 +35,21 @@ document.addEventListener("DOMContentLoaded", function () {
     buscador.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             e.preventDefault();
-            window.location.href = route(`ver-producto/${productos[0].id}`);
+            let query = buscador.value.trim();
+
+            if (query.length > 1) {
+                window.location.href = route(`ver-productos?nombre=${query}`);
+            }
         }
     });
+
+    if (filtrosVerProductos) {
+        const btnAplicarFiltros = document.getElementById(
+            "btn-aplicar-filtros"
+        );
+
+        btnAplicarFiltros.addEventListener("click", function () {
+            window.location.href = route(`ver-productos`);
+        });
+    }
 });

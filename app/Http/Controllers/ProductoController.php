@@ -37,11 +37,47 @@ class ProductoController extends Controller
         }
     }
     
-    public function verProductos(){
-        $productos = Producto::where('activo_producto', true)->where('stock_producto', '>', 0)->get();
-        $categorias = Categoria::all()->where('activo_categoria', true);
-        $marcas = Marca::all()->where('activo_marca', true);
-        return view('clients/verProductos', compact('productos', 'categorias', 'marcas'));
+    public function verProductos(Request $request)
+    {
+        $query = Producto::where('activo_producto', true)
+                         ->where('stock_producto', '>', 0);
+
+        if ($request->filled('nombre')) {
+            $query->where('nombre_producto', 'LIKE', "%{$request->nombre}%");
+        }
+
+        if ($request->has('categoria')) {
+            $categoriasSeleccionadas = array_values($request->categoria); // Obtener valores del array
+            $query->where(function ($q) use ($categoriasSeleccionadas) {
+                foreach ($categoriasSeleccionadas as $categoria) {
+                    $q->orWhere('fk_id_categoria', $categoria);
+                }
+            });
+        }
+
+        if ($request->has('marca')) {
+            $marcasSeleccionadas = array_values($request->marca);
+            $query->where(function ($q) use ($marcasSeleccionadas) {
+                foreach ($marcasSeleccionadas as $marca) {
+                    $q->orWhere('fk_id_marca', $marca);
+                }
+            });
+        }
+
+        if ($request->filled('precio_min')) {
+            $query->where('precio_producto', '>=', $request->precio_min);
+        }
+
+        if ($request->filled('precio_max')) {
+            $query->where('precio_producto', '<=', $request->precio_max);
+        }
+
+        $productos = $query->get();
+
+        $categorias = Categoria::where('activo_categoria', true)->get();
+        $marcas = Marca::where('activo_marca', true)->get();
+
+        return view('clients.verProductos', compact('productos', 'categorias', 'marcas'));
     }
 
     public function verProducto($id){

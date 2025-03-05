@@ -21,8 +21,8 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'Intel Core i9-13900K',
                 'descripcion_producto' => 'Procesador de 24 núcleos y 32 hilos con frecuencia turbo de hasta 5.8 GHz.',
                 'codigo_producto' => 'CPU001',
-                'fk_id_categoria' => null, // Procesadores
-                'fk_id_marca' => null, // Intel
+                'fk_id_categoria' => 1, // Procesadores
+                'fk_id_marca' => 1, // Intel
                 'precio_producto' => 649.99,
                 'stock_producto' => 20,
                 'destacado_producto' => true,
@@ -35,8 +35,8 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'NVIDIA GeForce RTX 4090',
                 'descripcion_producto' => 'Tarjeta gráfica de última generación con 24 GB de memoria GDDR6X.',
                 'codigo_producto' => 'GPU002',
-                'fk_id_categoria' => null, // Tarjetas Gráficas
-                'fk_id_marca' => null, // NVIDIA
+                'fk_id_categoria' => 2, // Tarjetas Gráficas
+                'fk_id_marca' => 3, // NVIDIA
                 'precio_producto' => 1599.99,
                 'stock_producto' => 10,
                 'destacado_producto' => true,

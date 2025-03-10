@@ -170,7 +170,8 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
         $categorias = Categoria::all();
-        return view("admin/productos/editarProducto", compact("producto", "categorias"));
+        $marcas = Marca::all();
+        return view("admin/productos/editarProducto", compact("producto", "categorias", "marcas"));
     }
 
     /**

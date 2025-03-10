@@ -4,6 +4,44 @@ export function contenidoCategorias() {
     listarCategorias();
 }
 
+export function initializeImagePreview() {
+    const imageInput = document.getElementById("imagen_categoria");
+    const preview = document.getElementById("image-preview");
+    const previewImg = preview.querySelector("img");
+
+    // Add remove button
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className =
+        "absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 transition-colors duration-200";
+    removeButton.innerHTML = `
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    `;
+    removeButton.addEventListener("click", () => {
+        imageInput.value = "";
+        preview.classList.add("hidden");
+        previewImg.src = "";
+    });
+
+    preview.classList.add("relative");
+    preview.appendChild(removeButton);
+
+    imageInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+
+        if (file) {
+            const imageUrl = URL.createObjectURL(file);
+            previewImg.src = imageUrl;
+            preview.classList.remove("hidden");
+        } else {
+            preview.classList.add("hidden");
+            previewImg.src = "";
+        }
+    });
+}
+
 export async function listarCategorias() {
     const listaCategorias = document.getElementById("listadoCategorias");
     listaCategorias.innerHTML = "";
@@ -71,11 +109,13 @@ export async function listarCategorias() {
 }
 
 async function obtenerCategorias() {
-    const categorias = await fetch("/categorias");
-    const data = await categorias.json();
-    console.log(data);
-
-    return Array.isArray(data) ? data : [];
+    try {
+        const response = await fetch("/categorias");
+        return await response.json();
+    } catch (error) {
+        console.error("Error al obtener categorías:", error);
+        return [];
+    }
 }
 
 async function eliminarCategoria(id) {

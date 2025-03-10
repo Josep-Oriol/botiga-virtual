@@ -1,24 +1,30 @@
 import { listarProductos } from "../utils/productos.js";
-import { listarCategorias } from "../utils/categorias.js";
+import { contenidoCategorias, initializeImagePreview } from "../utils/categorias.js";
 import { listarUsuarios } from "../utils/usuarios.js";
 import { listarCompras } from "../utils/compras.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const listadoProductos = document.getElementById("listadoProductos");
-    const listadoCategorias = document.getElementById("listadoCategorias");
-    const listadoUsuarios = document.getElementById("listadoUsuarios");
-    const listadoCompras = document.getElementById("listadoCompras");
+    const currentPage = {
+        productos: document.getElementById("listadoProductos"),
+        categorias: document.getElementById("listadoCategorias"),
+        usuarios: document.getElementById("listadoUsuarios"),
+        compras: document.getElementById("listadoCompras"),
+        crearCategoria: document.getElementById("imagen_categoria")
+    };
 
-    if (listadoProductos) {
+    if (currentPage.productos) {
         console.log("listadoProductos");
         listarProductos();
-    } else if (listadoCategorias) {
-        console.log("listadoCategorias");
-        listarCategorias();
-    } else if (listadoUsuarios) {
+    } else if (currentPage.categorias) {
+        console.log("categorias");
+        contenidoCategorias();
+    } else if (currentPage.crearCategoria) {
+        console.log("crear/editar categoria");
+        initializeImagePreview();
+    } else if (currentPage.usuarios) {
         console.log("listadoUsuarios");
         listarUsuarios();
-    } else if (listadoCompras) {
+    } else if (currentPage.compras) {
         console.log("listadoCompras");
         listarCompras();
     }

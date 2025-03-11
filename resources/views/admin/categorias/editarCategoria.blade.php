@@ -57,7 +57,11 @@
                         <input type="file" 
                                name="imagen_categoria" 
                                id="imagen_categoria" 
+                               accept="image/*"
                                class="w-full bg-custom-dark2 text-white p-3 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-primary file:text-white hover:file:bg-blue-600">
+                        <div id="image-preview" class="relative mt-4 hidden">
+                            <img src="" alt="Vista previa" class="w-40 h-40 object-cover rounded-lg">
+                        </div>
                     </div>
 
                     <div class="flex flex-col gap-4">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriaController extends Controller
 {
@@ -49,20 +50,27 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'nombre_categoria' => 'required',
+            'imagen_categoria' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+        ]);
+    
+        $imagePath = null;
+        if ($request->hasFile('imagen_categoria')) {
+            $imagePath = $request->file('imagen_categoria')->store('categorias', 'public');
+        }
+    
         Categoria::create([
-            'nombre_categoria' =>request('nombre_categoria'),
-            'codigo_categoria' =>request('codigo_categoria'),
-            'descripcion_categoria' => request('descripcion_categoria'),
-            'imagen_categoria' => request()->has('imagen_categoria') ? request('imagen_categoria') : null,
-            'activo_categoria' => request()->has('activo_categoria') ? true : false
+            'nombre_categoria' => $request->nombre_categoria,
+            'codigo_categoria' => $request->codigo_categoria,
+            'descripcion_categoria' => $request->descripcion_categoria,
+            'imagen_categoria' => $imagePath,
+            'activo_categoria' => $request->has('activo_categoria'),
+            'destacada_categoria' => $request->has('destacada_categoria')
         ]);
-
-        return redirect()->route('mostrarEstadisticasCategoria');
-       /*go_categoria' => request('codigo_categoria')
-        ]);
-        
-        return redirect()->route('main/principal');*/
+    
+        return redirect()->route('mostrarEstadisticasCategoria')
+            ->with('success', 'Categoría creada correctamente');
     }
 
     /**
@@ -88,16 +96,33 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $categoria = Categoria::find($id);
-        $categoria->update([
-            'nombre_categoria' => request('nombre_categoria'),
-            'codigo_categoria' => request('codigo_categoria'),
-            'descripcion_categoria' => request('descripcion_categoria'),
-            'imagen_categoria' => request()->has('imagen_categoria') ? request('imagen_categoria') : null,
-            'activo_categoria' => request()->has('activo_categoria') ? true : false
+        $request->validate([
+            'nombre_categoria' => 'required',
+            'imagen_categoria' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
         ]);
-
-        return redirect()->route('mostrarEstadisticasCategoria');
+    
+        $categoria = Categoria::find($id);
+        $updateData = [
+            'nombre_categoria' => $request->nombre_categoria,
+            'codigo_categoria' => $request->codigo_categoria,
+            'descripcion_categoria' => $request->descripcion_categoria,
+            'activo_categoria' => $request->has('activo_categoria'),
+            'destacada_categoria' => $request->has('destacada_categoria')
+        ];
+    
+        if ($request->hasFile('imagen_categoria')) {
+            // Delete old image if exists
+            if ($categoria->imagen_categoria && Storage::disk('public')->exists($categoria->imagen_categoria)) {
+                Storage::disk('public')->delete($categoria->imagen_categoria);
+            }
+            // Store new image
+            $updateData['imagen_categoria'] = $request->file('imagen_categoria')->store('categorias', 'public');
+        }
+    
+        $categoria->update($updateData);
+    
+        return redirect()->route('mostrarEstadisticasCategoria')
+            ->with('success', 'Categoría actualizada correctamente');
     }
 
     /**
@@ -120,5 +145,11 @@ class CategoriaController extends Controller
         }
 
         return $response;
+    }
+
+    public function listar()
+    {
+        $categorias = Categoria::all();
+        return response()->json($categorias);
     }
 }

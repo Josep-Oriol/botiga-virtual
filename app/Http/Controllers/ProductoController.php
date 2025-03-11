@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Categoria;
 use App\Models\Caracteristica;
 use App\Models\Marca;
+use Illuminate\Support\Facades\Storage; 
 
 class ProductoController extends Controller
 {
@@ -18,10 +19,11 @@ class ProductoController extends Controller
         $productosDestacados = Producto::where('destacado_producto', true)
                                         ->where('activo_producto', true)
                                         ->where('stock_producto', '>', 0)
-                                        ->limit(5)->get();
+                                        ->limit(4)->get();
 
         $categoriasDestacadas = Categoria::where('activo_categoria', true)
                                 ->where('destacada_categoria', true)
+                                ->limit(4)
                                 ->get();
 
         return view('main', compact('productosDestacados', 'categoriasDestacadas'));
@@ -179,18 +181,37 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $producto = Producto::find($id);
-        $producto->update([
-            'nombre_producto' => request('nombre_producto'),
-            'descripcion_producto' => request('descripcion_producto'),
-            'codigo_producto' => request('codigo_producto'),
-            'precio_producto' => request('precio_producto'),
-            'stock_producto' => request('stock_producto'),
-            'destacado_producto' => request()->has('destacado_producto') ? true : false,
-            'activo_producto' => request()->has('activo_producto') ? true : false
+        $request->validate([
+            'nombre_producto' => 'required',
+            'foto_portada_producto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:4096'
         ]);
-
-        return redirect()->route('mostrarEstadisticasProducto');
+    
+        $producto = Producto::find($id);
+        $updateData = [
+            'nombre_producto' => $request->nombre_producto,
+            'descripcion_producto' => $request->descripcion_producto,
+            'codigo_producto' => $request->codigo_producto,
+            'fk_id_categoria' => $request->fk_id_categoria,
+            'fk_id_marca' => $request->fk_id_marca,
+            'precio_producto' => $request->precio_producto,
+            'stock_producto' => $request->stock_producto,
+            'destacado_producto' => $request->has('destacado_producto'),
+            'activo_producto' => $request->has('activo_producto')
+        ];
+    
+        if ($request->hasFile('foto_portada_producto')) {
+            // Delete old image if exists
+            if ($producto->foto_portada_producto && Storage::disk('public')->exists($producto->foto_portada_producto)) {
+                Storage::disk('public')->delete($producto->foto_portada_producto);
+            }
+            // Store new image
+            $updateData['foto_portada_producto'] = $request->file('foto_portada_producto')->store('productos', 'public');
+        }
+    
+        $producto->update($updateData);
+    
+        return redirect()->route('mostrarEstadisticasProducto')
+            ->with('success', 'Producto actualizado correctamente');
     }
 
     /**

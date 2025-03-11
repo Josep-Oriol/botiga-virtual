@@ -38,3 +38,5 @@ Route::get('productos-buscar', [BuscadorController::class, 'buscarProducto'])->n
 Route::get('ver-producto/{id}', [ProductoController::class, 'verProducto'])->name('verProducto');
 Route::get('ver-productos', [ProductoController::class, 'verProductos'])->name('verProductos');
 Route::get('comprobar-stock/{id}', [ProductoController::class, 'comprobarStock'])->name('comprobarStock');
+
+Route::get('/api/categorias/listar', [CategoriaController::class, 'listar']);

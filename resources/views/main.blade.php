@@ -17,7 +17,9 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 justify-center" id="categoriasDestacadas">
                 @foreach ($categoriasDestacadas as $categoria)
                     <div class="categoria-destacada flex flex-col items-center justify-center px-3 md:px-6 py-3 md:py-4 bg-custom-dark3 rounded-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <img src="{{ asset('storage/categorias/' . $categoria->imagen_categoria) }}" alt="{{ $categoria->nombre_categoria }}" class="w-full max-w-[120px]">
+                        <img src="{{ asset('storage/' . $categoria->imagen_categoria) }}" 
+                             alt="{{ $categoria->nombre_categoria }}" 
+                             class="w-full max-w-[120px]">
                         <h3 class="text-base md:text-lg font-bold text-primary mt-2">{{ $categoria->nombre_categoria }}</h3>
                     </div>
                 @endforeach
@@ -33,12 +35,19 @@
             </div>
             <div id="productosDestacados" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 @foreach ($productosDestacados as $producto)
-                    <div class="producto-destacado flex flex-col justify-between gap-3 md:gap-4 px-4 md:px-6 py-4 bg-custom-dark3 rounded-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer h-auto md:h-[300px]">
-                        <img src="{{ asset('storage/productos/' . $producto->imagen_producto) }}" alt="{{ $producto->nombre_producto }}" class="w-full object-contain max-h-[150px]">
-                        <div class="flex flex-col gap-2">
-                            <h3 class="text-base md:text-lg font-bold text-white">{{ $producto->nombre_producto }}</h3>
-                            <p class="text-primary">{{ $producto->precio_producto }}€</p>
-                            <a href="{{ route('verProducto', $producto->id) }}" class="bg-primary px-4 md:px-8 py-2 md:py-3 rounded-lg font-semibold hover:bg-blue-600 text-center">Ver producto</a>
+                    <div class="producto-destacado flex flex-col gap-4 p-4 bg-custom-dark3 rounded-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <div class="aspect-square w-full">
+                            <img src="{{ asset('storage/' . $producto->foto_portada_producto) }}" 
+                                 alt="{{ $producto->nombre_producto }}"
+                                 class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h3 class="text-base md:text-lg font-bold text-white line-clamp-2">{{ $producto->nombre_producto }}</h3>
+                            <p class="text-xl font-bold text-primary">{{ number_format($producto->precio_producto, 2, ',', '.') }}€</p>
+                            <a href="{{ route('verProducto', $producto->id) }}" 
+                               class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-center transition-colors duration-200">
+                                Ver producto
+                            </a>
                         </div>
                     </div>
                 @endforeach

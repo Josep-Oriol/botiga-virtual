@@ -9,7 +9,7 @@
             <p class="text-gray-400">Modifica los detalles del producto</p>
         </div>
 
-        <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

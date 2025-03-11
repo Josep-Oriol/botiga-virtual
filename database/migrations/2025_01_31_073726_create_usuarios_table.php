@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('usuario_usuario', 255);
             $table->string('nombre_usuario', 255);
             $table->string('apellidos_usuario', 255)->nullable();
-            $table->string('email_usuario', 255);
+            $table->string('email', 255);
             $table->bigInteger('telefono_usuario')->nullable();
             $table->string('direccion_usuario', 255)->nullable();
-            $table->string('password_usuario', 255);
+            $table->string('password', 255);
             $table->enum('tipo_usuario', ['admin', 'comprador'])->default('comprador');
             $table->boolean('activo_usuario')->default(true);
             $table->timestamps();

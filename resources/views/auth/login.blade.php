@@ -9,7 +9,7 @@
         <img src="{{asset('logos/logo_grande.webp')}}" alt="">
     </a>
   <div class="bg-custom-dark3 rounded-lg w-full max-w-md p-6 shadow-lg">
-    <form method="POST" action="#">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-4">
             <label for="email" class="block text-white text-sm mb-2">Usuario</label>
@@ -19,7 +19,7 @@
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                     </svg>
                 </div>
-                <input id="email" name="email" type="text" required placeholder="Introduce tu usuario" 
+                <input id="email" name="email type="text" required placeholder="Introduce tu email" autocomplete="off"
                         class="bg-custom-dark3 border border-gray-700 text-white rounded-md block w-full pl-10 pr-3 py-2 focus:outline-none focus:border-primary">
             </div>
         </div>
@@ -61,7 +61,7 @@
     <div class="text-center mt-6">
         <p class="text-white text-sm">
             ¿No tienes una cuenta? 
-            <a href="{{ route('register') }}" class="text-secondary font-medium hover:underline">
+            <a href="{{ route('showRegister') }}" class="text-secondary font-medium hover:underline">
                 Regístrate ahora
             </a>
         </p>

@@ -3,6 +3,9 @@
 @section('title', 'PC Markt')
 
 @section('content')
+    @if (session('user'))
+        <div>Funciona</div>
+    @endif
     <section class="relative bg-gradient-to-r from-custom-dark3 to-custom-dark2 py-12 md:py-20 bg-cover bg-center">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 container mx-auto px-4 md:px-6 lg:px-20 text-center md:text-left">  

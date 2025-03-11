@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\User;
 class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function mostrarEstadisticasUsuario(){
-        $totales = Usuario::count();
-        $usuariosActivos = Usuario::where('activo_usuario', true)->count();
-        $usuariosInactivos = Usuario::where('activo_usuario', false)->count();
+        $totales = User::count();
+        $usuariosActivos = User::where('activo_usuario', true)->count();
+        $usuariosInactivos = User::where('activo_usuario', false)->count();
         return view('admin/usuarios/estadisticaUsuario', compact('totales', 'usuariosActivos', 'usuariosInactivos'));
     }
 
@@ -39,7 +40,7 @@ class UsuarioController extends Controller
     
     public function index()
     {
-        return response()->json(Usuario::all());
+        return response()->json(User::all());
     }
 
     /**
@@ -55,7 +56,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = Usuario::create($request->all());
+        $usuario = User::create($request->all());
         return redirect()->route('admin.usuarios.index');
     }
 
@@ -64,7 +65,7 @@ class UsuarioController extends Controller
      */
     public function show(string $id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         return view('admin/usuarios/verUsuario', compact('usuario'));
     }
 
@@ -73,7 +74,7 @@ class UsuarioController extends Controller
      */
     public function edit(string $id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         return view('admin/usuarios/editarUsuario', compact('usuario'));
     }
 
@@ -90,7 +91,7 @@ class UsuarioController extends Controller
             'activo_usuario' => 'required|boolean',
         ]);
 
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->update($validated);
         return redirect()->route('admin.usuarios.index');
     }
@@ -100,7 +101,7 @@ class UsuarioController extends Controller
      */
     public function destroy(string $id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->delete();
         return redirect()->route('admin.usuarios.index');
     }

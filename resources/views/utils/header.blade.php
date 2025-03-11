@@ -54,7 +54,7 @@
                 <span class="text-lg font-medium">Mi cesta</span>
             </a>
 
-            <a href="{{ route('mostrarLogin') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
+            <a href="{{ route('showLogin') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
                 <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
                 </svg>

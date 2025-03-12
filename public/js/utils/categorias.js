@@ -98,6 +98,7 @@ export async function setMasVendidas(filtro) {
     const canvas = document.getElementById("masVendidas");
     const ctx = canvas.getContext("2d");
     const data = await categoriasMasVendidas(filtro);
+    console.log(data);
 
     const resizeCanvas = () => {
         const container = canvas.parentElement;

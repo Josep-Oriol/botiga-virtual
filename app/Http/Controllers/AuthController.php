@@ -24,10 +24,9 @@ class AuthController extends Controller
             return redirect()->route('main');
         }
 
-        return back()->withErrors([
-            'email_usuario'=> 'Credenciales incorrectas'
-        ]);
+        return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
+
 
     // Mostrar el formulario de registro
     public function showRegistrationForm()

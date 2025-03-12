@@ -3,6 +3,15 @@
 @section('title', 'Login')
 
 @section('content')
+@if(Auth::check())
+    <div class="text-white bg-green-500 p-4 rounded">
+        Usuario autenticado: {{ Auth::user()->email }}
+    </div>
+@else
+    <div class="text-white bg-red-500 p-4 rounded">
+        No estás autenticado.
+    </div>
+@endif
 
 <div class="flex justify-center items-center h-screen flex-col">
     <a href="{{ route('main') }}">
@@ -19,7 +28,7 @@
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                     </svg>
                 </div>
-                <input id="email" name="email type="text" required placeholder="Introduce tu email" autocomplete="off"
+                <input id="email" name="email" type="text" required placeholder="Introduce tu email" autocomplete="off"
                         class="bg-custom-dark3 border border-gray-700 text-white rounded-md block w-full pl-10 pr-3 py-2 focus:outline-none focus:border-primary">
             </div>
         </div>

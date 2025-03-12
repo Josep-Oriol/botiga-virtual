@@ -41,28 +41,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function getAuthPassword()
-    {
-        return $this->password_usuario;
-    }
-
-    protected $table = 'usuarios';
-
-    protected $fillable = [
-        'usuario_usuario',
-        'nombre_usuario',
-        'apellidos_usuario',
-        'email',
-        'telefono_usuario',
-        'direccion_usuario',
-        'password',
-        'tipo_usuario',
-        'activo_usuario'
-    ];
-
-    public function compras()
-    {
-        return $this->hasMany(Compra::class, 'fk_id_usuario');
-    }
 }

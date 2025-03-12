@@ -44,8 +44,8 @@ Route::get('/api/categorias/listar', [CategoriaController::class, 'listar']);
 
 
 // routes/web.php
-Route::get('login',[AuthController::class, 'showLoginForm'])->name('showLogin');
-Route::post('loginPost', [AuthController::class, 'login'])->name('login');
+Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('register',[AuthController::class,'showRegistrationForm'])->name('showRegister');
 Route::get('registerPost', [AuthController::class, 'register'])->name('register');
 

@@ -16,13 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
         crearCategoria: document.getElementById("imagen_categoria"),
     };
 
+    const categoriasMensualesSelect =
+        document.getElementById("selectMensuales");
+
+    if (categoriasMensualesSelect) {
+        categoriasMensualesSelect.addEventListener("change", () => {
+            const selectedOption = categoriasMensualesSelect.value;
+            setMasVendidas(selectedOption);
+        });
+    }
+
     if (currentPage.productos) {
         console.log("listadoProductos");
         listarProductos();
     } else if (currentPage.categorias) {
         console.log("categorias");
         contenidoCategorias();
-        setMasVendidas();
+        setMasVendidas("dia");
     } else if (currentPage.crearCategoria) {
         console.log("crear/editar categoria");
         initializeImagePreview();

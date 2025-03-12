@@ -35,7 +35,7 @@
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">
                 <div class="flex flex-col sm:flex-row justify-between gap-2">
                     <h2 class="text-base md:text-lg font-semibold">Ventas Mensuales</h2>
-                    <select class="bg-custom-dark2 text-white p-2 rounded text-sm md:text-base">
+                    <select id="selectMensuales"class="bg-custom-dark2 text-white p-2 rounded text-sm md:text-base">
                         <option>Este Año</option>
                         <option>Este Mes</option>
                     </select>

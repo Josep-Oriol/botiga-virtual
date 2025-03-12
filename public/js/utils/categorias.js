@@ -94,10 +94,10 @@ export async function listarCategorias() {
     }
 }
 
-export async function setMasVendidas() {
+export async function setMasVendidas(filtro) {
     const canvas = document.getElementById("masVendidas");
     const ctx = canvas.getContext("2d");
-    const data = await categoriasMasVendidas();
+    const data = await categoriasMasVendidas(filtro);
 
     const resizeCanvas = () => {
         const container = canvas.parentElement;
@@ -106,10 +106,10 @@ export async function setMasVendidas() {
     };
 
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas());
 
     const padding = 60;
-    const chartWidth = canvas.width * 0.6;
+    const chartWidth = canvas.width * 0.5;
     const startX = (canvas.width - chartWidth) / 2;
     const barWidth = chartWidth / data.length;
     const maxRevenue = Math.max(
@@ -211,8 +211,8 @@ export async function categoriasDestacadas() {
     return Array.isArray(data) ? data : [];
 }
 
-export async function categoriasMasVendidas() {
-    const categorias = await fetch(`/categorias-mas-vendidas`);
+export async function categoriasMasVendidas(filtro) {
+    const categorias = await fetch(`/categorias-mas-vendidas?filtro=${filtro}`);
     const data = await categorias.json();
     return Array.isArray(data) ? data : [];
 }

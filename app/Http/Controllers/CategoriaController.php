@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -39,24 +40,24 @@ class CategoriaController extends Controller
     {
         $filtro = $request->query('filtro', 'hoy');
 
-        $query = Categoria::select([
+        $categoriasMasVendidas = Categoria::select([
             'categorias.nombre_categoria',
-            \DB::raw('COUNT(detalles_compras.id) as total_ventas'),
-            \DB::raw('SUM(detalles_compras.subtotal_detalles) as total_ingresos')
+            DB::raw('COUNT(detalles_compras.id) as total_ventas'),
+            DB::raw('SUM(detalles_compras.subtotal_detalles) as total_ingresos')
         ])
         ->join('productos', 'productos.fk_id_categoria', '=', 'categorias.id')
         ->join('detalles_compras', 'detalles_compras.fk_id_producto', '=', 'productos.id');
 
         if ($filtro === 'hoy') {
-            $query->whereDate('detalles_compras.created_at', now()->toDateString());
+            $categoriasMasVendidas->whereDate('detalles_compras.created_at', now()->toDateString());
         } elseif ($filtro === 'mes') {
-            $query->whereYear('detalles_compras.created_at', now()->year)
+            $categoriasMasVendidas->whereYear('detalles_compras.created_at', now()->year)
                 ->whereMonth('detalles_compras.created_at', now()->month);
         } elseif ($filtro === 'año') {
-            $query->whereYear('detalles_compras.created_at', now()->year);
+            $categoriasMasVendidas->whereYear('detalles_compras.created_at', now()->year);
         }
 
-        $categoriasMasVendidas = $query->groupBy('categorias.nombre_categoria')
+        $categoriasMasVendidas = $categoriasMasVendidas->groupBy('categorias.nombre_categoria')
             ->orderBy('total_ventas', 'desc')
             ->take(5)
             ->get();

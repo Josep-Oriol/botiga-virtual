@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (currentPage.categorias) {
         console.log("categorias");
         contenidoCategorias();
-        setMasVendidas("dia");
+        setMasVendidas("hoy");
     } else if (currentPage.crearCategoria) {
         console.log("crear/editar categoria");
         initializeImagePreview();

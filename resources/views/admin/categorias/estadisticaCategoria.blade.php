@@ -36,8 +36,9 @@
                 <div class="flex flex-col sm:flex-row justify-between gap-2">
                     <h2 class="text-base md:text-lg font-semibold">Ventas Mensuales</h2>
                     <select id="selectMensuales"class="bg-custom-dark2 text-white p-2 rounded text-sm md:text-base">
-                        <option>Este Año</option>
-                        <option>Este Mes</option>
+                        <option value="hoy">Hoy</option>
+                        <option value="mes">Este Mes</option>
+                        <option value="año">Este Año</option>
                     </select>
                 </div>
                 <div class="mt-4 h-32 md:h-48 bg-custom-dark2 rounded-xl flex justify-center items-center p-4 space-x-2">

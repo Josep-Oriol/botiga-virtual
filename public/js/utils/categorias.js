@@ -7,19 +7,19 @@ export function contenidoCategorias() {
 export function initializeImagePreview() {
     const imageInput = document.getElementById("imagen_categoria");
     const preview = document.getElementById("image-preview");
-    
+
     if (!imageInput || !preview) return;
-    
+
     const previewImg = preview.querySelector("img");
 
-    imageInput.addEventListener("change", function(e) {
+    imageInput.addEventListener("change", function (e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 previewImg.src = e.target.result;
                 preview.classList.remove("hidden");
-            }
+            };
             reader.readAsDataURL(file);
         } else {
             preview.classList.add("hidden");
@@ -94,6 +94,79 @@ export async function listarCategorias() {
     }
 }
 
+export async function setMasVendidas() {
+    const canvas = document.getElementById("masVendidas");
+    const ctx = canvas.getContext("2d");
+    const data = await categoriasMasVendidas();
+
+    const resizeCanvas = () => {
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const padding = 60;
+    const chartWidth = canvas.width * 0.6;
+    const startX = (canvas.width - chartWidth) / 2;
+    const barWidth = chartWidth / data.length;
+    const maxRevenue = Math.max(
+        ...data.map((item) => parseFloat(item.total_ingresos))
+    );
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const colors = ["#3B82F6", "#10B981"];
+
+    data.forEach((item, index) => {
+        const x = startX + index * barWidth + barWidth * 0.15;
+        const barWidthActual = barWidth * 0.7;
+        const color = colors[index % colors.length];
+
+        const revenueHeight =
+            (parseFloat(item.total_ingresos) / maxRevenue) *
+            (canvas.height - padding * 2.5);
+
+        ctx.fillStyle = color;
+        ctx.fillRect(
+            x,
+            canvas.height - padding - revenueHeight,
+            barWidthActual,
+            revenueHeight
+        );
+
+        // Ventas valores
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 14px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(
+            "€" + parseFloat(item.total_ingresos).toFixed(2),
+            x + barWidthActual / 2,
+            canvas.height - padding - revenueHeight - 10
+        );
+
+        // Nombre categorias
+        ctx.fillStyle = color;
+        ctx.font = "bold 13px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(
+            item.nombre_categoria,
+            x + barWidthActual / 2,
+            canvas.height - padding / 2
+        );
+    });
+
+    // Linea suelo
+    ctx.beginPath();
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 1;
+    ctx.moveTo(startX - 20, canvas.height - padding);
+    ctx.lineTo(startX + chartWidth + 20, canvas.height - padding);
+    ctx.stroke();
+}
+
 async function obtenerCategorias() {
     try {
         const response = await fetch("/categorias");
@@ -134,6 +207,12 @@ export async function buscarCategoria(nombre) {
 
 export async function categoriasDestacadas() {
     const categorias = await fetch(`/categorias-destacadas`);
+    const data = await categorias.json();
+    return Array.isArray(data) ? data : [];
+}
+
+export async function categoriasMasVendidas() {
+    const categorias = await fetch(`/categorias-mas-vendidas`);
     const data = await categorias.json();
     return Array.isArray(data) ? data : [];
 }

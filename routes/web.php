@@ -31,7 +31,9 @@ Route::get('pedidos-estadisticas', [CompraController::class, 'mostrarEstadistica
 Route::get('estadisticas', [EstadisticaController::class, 'mostrarEstadisticas'])->name('mostrarEstadisticas');
 
 Route::get('productos-destacados', [ProductoController::class, 'productosDestacados'])->name('productosDestacados');
+
 Route::get('categorias-destacadas', [CategoriaController::class, 'categoriasDestacadas'])->name('categoriasDestacadas');
+Route::get('categorias-mas-vendidas', [CategoriaController::class, 'categoriasMasVendidas'])->name('categoriasMasVendidas');
 
 Route::get('productos-buscar', [BuscadorController::class, 'buscarProducto'])->name('productos.buscar');
 Route::get('ver-producto/{id}', [ProductoController::class, 'verProducto'])->name('verProducto');

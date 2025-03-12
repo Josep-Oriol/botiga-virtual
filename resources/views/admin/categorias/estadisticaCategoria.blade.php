@@ -40,7 +40,9 @@
                         <option>Este Mes</option>
                     </select>
                 </div>
-                <div class="mt-4 h-32 md:h-48 bg-custom-dark2 rounded-xl flex items-end p-4 space-x-2"></div>
+                <div class="mt-4 h-32 md:h-48 bg-custom-dark2 rounded-xl flex justify-center items-center p-4 space-x-2">
+                    <canvas id="masVendidas"></canvas>
+                </div>
             </div>
 
             <div class="bg-custom-dark3 p-4 rounded-xl shadow-md">

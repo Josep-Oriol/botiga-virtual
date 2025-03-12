@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('fk_id_producto');
             $table->bigInteger('cantidad_producto_detalles');
             $table->decimal('precio_producto_detalles', 8, 2);
+            $table->decimal('subtotal_detalles', 8, 2);
             $table->timestamps();
 
             $table->foreign('fk_id_compra')->references('id')->on('compras')->onDelete('cascade');

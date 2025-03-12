@@ -1,5 +1,9 @@
 import { listarProductos } from "../utils/productos.js";
-import { contenidoCategorias, initializeImagePreview } from "../utils/categorias.js";
+import {
+    contenidoCategorias,
+    initializeImagePreview,
+    setMasVendidas,
+} from "../utils/categorias.js";
 import { listarUsuarios } from "../utils/usuarios.js";
 import { listarCompras } from "../utils/compras.js";
 
@@ -9,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         categorias: document.getElementById("listadoCategorias"),
         usuarios: document.getElementById("listadoUsuarios"),
         compras: document.getElementById("listadoCompras"),
-        crearCategoria: document.getElementById("imagen_categoria")
+        crearCategoria: document.getElementById("imagen_categoria"),
     };
 
     if (currentPage.productos) {
@@ -18,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (currentPage.categorias) {
         console.log("categorias");
         contenidoCategorias();
+        setMasVendidas();
     } else if (currentPage.crearCategoria) {
         console.log("crear/editar categoria");
         initializeImagePreview();

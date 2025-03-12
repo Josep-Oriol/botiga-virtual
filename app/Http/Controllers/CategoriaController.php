@@ -22,12 +22,33 @@ class CategoriaController extends Controller
         return response()->json($categorias);
     }
 
-    public function mostrarEstadisticasCategoria(){
+    public function mostrarEstadisticasCategoria()
+    {
         $totales = Categoria::count();
         $categoriasActivas = Categoria::where('activo_categoria', true)->count();
         $categoriasInactivas = Categoria::where('activo_categoria', false)->count();
-        //$populares = Categoria::orderBy(Categoria::with('productos')->count(), 'desc')->take(3)->get();
-        return view('admin/categorias/estadisticaCategoria', compact('totales', 'categoriasActivas', 'categoriasInactivas'));
+    
+        return view('admin/categorias/estadisticaCategoria', compact(
+            'totales', 
+            'categoriasActivas', 
+            'categoriasInactivas'
+        ));
+    }
+
+    public function categoriasMasVendidas(){
+        $categoriasMasVendidas = Categoria::select([
+            'categorias.nombre_categoria',
+            \DB::raw('COUNT(detalles_compras.id) as total_ventas'),
+            \DB::raw('SUM(detalles_compras.subtotal_detalles) as total_ingresos')
+        ])
+        ->join('productos', 'productos.fk_id_categoria', '=', 'categorias.id')
+        ->join('detalles_compras', 'detalles_compras.fk_id_producto', '=', 'productos.id')
+        ->groupBy('categorias.nombre_categoria')
+        ->orderBy('total_ventas', 'desc')
+        ->take(5)
+        ->get();
+
+        return response()->json($categoriasMasVendidas);
     }
 
     public function index()

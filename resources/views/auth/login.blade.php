@@ -3,16 +3,6 @@
 @section('title', 'Login')
 
 @section('content')
-@if(Auth::check())
-    <div class="text-white bg-green-500 p-4 rounded">
-        Usuario autenticado: {{ Auth::user()->email }}
-    </div>
-@else
-    <div class="text-white bg-red-500 p-4 rounded">
-        No estás autenticado.
-    </div>
-@endif
-
 <div class="flex justify-center items-center h-screen flex-col">
     <a href="{{ route('main') }}">
         <img src="{{asset('logos/logo_grande.webp')}}" alt="">

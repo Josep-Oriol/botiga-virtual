@@ -42,6 +42,8 @@ Route::get('comprobar-stock/{id}/{cantidad}', [ProductoController::class, 'compr
 
 Route::get('/api/categorias/listar', [CategoriaController::class, 'listar']);
 
+Route::post('carrito-agregar', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
+
 
 // routes/web.php
 Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');

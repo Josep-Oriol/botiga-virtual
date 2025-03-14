@@ -38,12 +38,6 @@
         </div>
 
         <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8">
-            <a href="{{ route('mostrarEstadisticas') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
-                <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
-                </svg>
-                <span class="font-medium">Mi cuenta</span>
-            </a>
 
             <a href="{{ route('carrito.index') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
                 <svg class="w-6 h-6 text-gray-300 fill-none stroke-current stroke-2 group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -54,12 +48,21 @@
                 <span class="text-lg font-medium">Mi cesta</span>
             </a>
 
-            <a href="{{ route('showLogin') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
-                <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
-                </svg>
-                <span class="font-medium">Login</span>
-            </a>
+            @if(Auth::check())
+                <a href="{{ route('mostrarEstadisticas') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
+                    <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
+                    </svg>
+                    <span class="font-medium">Mi cuenta</span>
+                </a>
+            @else
+                <a href="{{ route('showLogin') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
+                    <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
+                    </svg>
+                    <span class="font-medium">Login</span>
+                </a>
+            @endif
         </div>
     </nav>
 </header>
@@ -67,12 +70,6 @@
 <div id="resultadosBusqueda" 
      class="fixed left-1/2 transform -translate-x-1/2 w-full max-w-lg bg-custom-dark2/95 backdrop-blur-md rounded-xl mt-2 shadow-xl border border-gray-700/50 overflow-hidden z-50 hidden max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent top-16">
 </div>
-
-<script>
-document.getElementById('mobile-menu-button').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-});
-</script>
-
+<script src="{{ asset('js/header/header.js') }}"></script>
 <script type="module" src="{{ asset('js/header/buscador.js') }}"></script>
-<script type="module" src="{{ asset('js/header/carrito.js') }}"></script>
+<script type="module" src="{{ asset('js/header/funcionalidadCarrito.js') }}"></script>

@@ -1,6 +1,8 @@
 import { asset } from "../admin/panelAdmin.js";
-
+import { agregarCarrito } from "../utils/carrito.js";
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("funcionalidad carrito");
+
     const carritoProductos = document.getElementById("carritoProductos");
     const carritoTotal = document.getElementById("carritoTotal");
 

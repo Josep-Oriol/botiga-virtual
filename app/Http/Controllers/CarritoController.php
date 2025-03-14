@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Carrito;
 
 class CarritoController extends Controller
 {
+
+    public function agregarAlCarrito(Request $request){
+        Carrito::create([
+            'fk_id_usuario' => $request->usuario_id,
+            'fk_id_producto' => $request->producto_id,
+            'cantidad' => $request->cantidad,
+            'precio' => $request->precio,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */

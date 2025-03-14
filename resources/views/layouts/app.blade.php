@@ -20,5 +20,10 @@
 
     @include('utils.footer')
 
+    <script>
+        window.user = {!! Auth::check() ? Auth::user()->toJson() : 'null' !!};
+    </script>
+
+
 </body>
 </html>

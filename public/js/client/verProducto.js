@@ -51,12 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (stock) {
             if (usuarioAutenticado()) {
                 if (await comprobarProducto(producto.id)) {
-                    await sumarCantidadProducto(producto.id);
+                    await sumarCantidadProducto(producto.id, cantidad);
                     alert("Sumaste la cantidad al carrito database");
                 } else {
                     await agregarCarrito(producto, cantidad);
+                    alert("Producto añadido al carrito database");
                 }
-                alert("Producto añadido al carrito database");
             } else {
                 const carrito =
                     JSON.parse(localStorage.getItem("carrito")) || [];

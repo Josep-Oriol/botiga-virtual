@@ -72,4 +72,4 @@
 </div>
 <script src="{{ asset('js/header/header.js') }}"></script>
 <script type="module" src="{{ asset('js/header/buscador.js') }}"></script>
-<script type="module" src="{{ asset('js/header/funcionalidadCarrito.js') }}"></script>
+<script type="module" src="{{ asset('js/header/verCarrito.js') }}"></script>

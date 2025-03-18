@@ -2,8 +2,8 @@ import { usuarioAutenticado, isAdmin, getIdUser } from "./auth.js";
 
 export async function agregarCarrito(producto, cantidad) {
     const idUser = getIdUser();
-    const precio = producto.precio * cantidad;
-    const response = await fetch("/ruta-agregar-carrito", {
+
+    const response = await fetch("/carrito-agregar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export async function agregarCarrito(producto, cantidad) {
             usuario_id: idUser,
             producto_id: producto.id,
             cantidad: cantidad,
-            precio: precio,
+            precio: producto.precio_producto,
         }),
     });
 }
@@ -72,7 +72,7 @@ export async function obtenerCarrito() {
 
 export async function eliminarCarrito() {
     const idUser = getIdUser();
-    const response = await fetch(`/carrito-eliminar/${idUser}`, {
+    const response = await fetch(`/carrito-vaciar/${idUser}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -89,10 +89,10 @@ export async function comprobarStock(id, cantidad) {
     return data;
 }
 
-export async function sumarCantidadProducto(idProducto) {
+export async function sumarCantidadProducto(idProducto, cantidad) {
     const idUser = getIdUser();
     const response = await fetch(
-        `/sumar-cantidad-producto/${idProducto}/${idUser}`,
+        `/sumar-cantidad-producto/${idProducto}/${idUser}/${cantidad}`,
         {
             method: "POST",
             headers: {

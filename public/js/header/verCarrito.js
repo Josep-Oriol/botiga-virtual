@@ -1,5 +1,6 @@
 import { asset } from "../admin/panelAdmin.js";
-import { agregarCarrito } from "../utils/carrito.js";
+import { usuarioAutenticado } from "../utils/auth.js";
+import { agregarCarrito, obtenerCarrito } from "../utils/carrito.js";
 document.addEventListener("DOMContentLoaded", function () {
     console.log("verCarrito");
 
@@ -72,8 +73,13 @@ function agregarAlCarrito(buttonProducto) {
     actualizarContadores();
 }
 
-function mostrarCarrito(carritoProductos) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+async function mostrarCarrito(carritoProductos) {
+    if (usuarioAutenticado()) {
+        let carrito = await obtenerCarrito();
+        console.log("carrito", carrito);
+    } else {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    }
 
     if (carrito.length === 0) {
         carritoProductos.innerHTML = `

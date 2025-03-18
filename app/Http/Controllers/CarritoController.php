@@ -50,10 +50,10 @@ class CarritoController extends Controller
         return response()->json($existe);
     }    
 
-    public function sumarCantidadProducto($id, $idUser) {
+    public function sumarCantidadProducto($id, $idUser, $cantidad) {
         Carrito::where('fk_id_producto', $id)
                 ->where('fk_id_usuario', $idUser)
-                ->increment('cantidad');
+                ->increment('cantidad', $cantidad);
     }    
 
     /**

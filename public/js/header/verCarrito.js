@@ -1,7 +1,7 @@
 import { asset } from "../admin/panelAdmin.js";
 import { agregarCarrito } from "../utils/carrito.js";
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("funcionalidad carrito");
+    console.log("verCarrito");
 
     const carritoProductos = document.getElementById("carritoProductos");
     const carritoTotal = document.getElementById("carritoTotal");
@@ -57,7 +57,6 @@ function agregarAlCarrito(buttonProducto) {
     const producto = JSON.parse(buttonProducto.value);
     producto.cantidad = 1;
 
-    // Ensure the image path is properly set
     if (producto.foto_portada_producto) {
         producto.imagen = `/storage/${producto.foto_portada_producto}`;
     }

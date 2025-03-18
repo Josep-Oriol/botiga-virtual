@@ -8,6 +8,32 @@ use App\Models\Carrito;
 class CarritoController extends Controller
 {
 
+    public function obtenerCarrito($idUser){
+        $carrito = Carrito::where('fk_id_usuario', $idUser)->get();
+        return response()->json($carrito);
+    }
+
+    public function vaciarCarrito($idUser){
+        $carrito = Carrito::where('fk_id_usuario', $idUser)->delete();
+        return response()->json($carrito);
+    }
+
+    public function eliminarProducto($idProducto, $idUser) {
+        $carrito = Carrito::where('fk_id_producto', $idProducto)
+                          ->where('fk_id_usuario', $idUser)
+                          ->delete();
+    
+        return response()->json($carrito);
+    }
+    
+
+    public function actualizarCarrito(Request $request, $idProducto, $idUser){
+        $carrito = Carrito::where('fk_id_producto', $idProducto)
+                            ->where('fk_id_usuario', $idUser)
+                            ->update(['cantidad' => $request->cantidad]);
+        return response()->json($carrito);
+    }    
+
     public function agregarAlCarrito(Request $request){
         Carrito::create([
             'fk_id_usuario' => $request->usuario_id,
@@ -16,6 +42,19 @@ class CarritoController extends Controller
             'precio' => $request->precio,
         ]);
     }
+
+    public function comprobarProducto($id, $idUser){
+        $existe = Carrito::where('fk_id_producto', $id)
+                        ->where('fk_id_usuario', $idUser)
+                        ->exists();
+        return response()->json($existe);
+    }    
+
+    public function sumarCantidadProducto($id, $idUser) {
+        Carrito::where('fk_id_producto', $id)
+                ->where('fk_id_usuario', $idUser)
+                ->increment('cantidad');
+    }    
 
     /**
      * Display a listing of the resource.

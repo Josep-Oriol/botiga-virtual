@@ -42,7 +42,13 @@ Route::get('comprobar-stock/{id}/{cantidad}', [ProductoController::class, 'compr
 
 Route::get('/api/categorias/listar', [CategoriaController::class, 'listar']);
 
+Route::get('carrito/{idUser}', [CarritoController::class, 'obtenerCarrito'])->name('carrito.obtener');
+Route::get('carrito/{idUser}', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 Route::post('carrito-agregar', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
+Route::get('carrito-eliminar-producto/{idProducto}/{idUser}', [CarritoController::class, 'eliminarProducto'])->name('carrito.eliminarProducto');
+Route::get('/carrito-actualizar/${idProducto}/{idUser}', [CarritoController::class, 'actualizarCarrito'])->name('carrito.actualizar');
+Route::get('/comprobar-producto/{id}/{idUser}', [CarritoController::class, 'comprobarProducto'])->name('carrito.comprobarProducto');
+Route::get('/sumar-cantidad-producto/{id}/{idUser}', [CarritoController::class, 'sumarCantidadProducto'])->name('carrito.sumarCantidadProducto');
 
 
 // routes/web.php

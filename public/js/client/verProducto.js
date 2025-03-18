@@ -1,4 +1,11 @@
-import { comprobarStock, agregarCarrito } from "../utils/carrito.js";
+import {
+    comprobarStock,
+    agregarCarrito,
+    comprobarProducto,
+    actualizarCarrito,
+    sumarCantidadProducto,
+} from "../utils/carrito.js";
+
 import { usuarioAutenticado } from "../utils/auth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -36,12 +43,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     agregarBtn.addEventListener("click", async function () {
+        console.log("entra antes");
         const cantidad = parseInt(cantidadCarritoValor.textContent);
         const stock = await comprobarStock(producto.id, cantidad);
+        console.log("entra des");
 
         if (stock) {
             if (usuarioAutenticado()) {
-                agregarCarrito(producto, cantidad);
+                if (await comprobarProducto(producto.id)) {
+                    await sumarCantidadProducto(producto.id);
+                    alert("Sumaste la cantidad al carrito database");
+                } else {
+                    await agregarCarrito(producto, cantidad);
+                }
                 alert("Producto añadido al carrito database");
             } else {
                 const carrito =

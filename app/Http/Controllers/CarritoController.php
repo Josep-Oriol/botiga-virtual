@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Carrito;
 
 class CarritoController extends Controller
@@ -60,7 +61,7 @@ class CarritoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         return view('clients.verCarrito');
     }
 

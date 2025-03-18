@@ -4,6 +4,7 @@ import {
     comprobarProducto,
     actualizarCarrito,
     sumarCantidadProducto,
+    obtenerCarrito,
 } from "../utils/carrito.js";
 
 import { usuarioAutenticado } from "../utils/auth.js";

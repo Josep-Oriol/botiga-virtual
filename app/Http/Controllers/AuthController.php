@@ -27,6 +27,11 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
 
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect()->route('main');
+    }
+
 
     // Mostrar el formulario de registro
     public function showRegistrationForm()

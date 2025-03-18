@@ -46,16 +46,17 @@ Route::get('carrito/{idUser}', [CarritoController::class, 'obtenerCarrito'])->na
 Route::get('carrito-vaciar/{idUser}', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 Route::post('carrito-agregar', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
 Route::get('carrito-eliminar-producto/{idProducto}/{idUser}', [CarritoController::class, 'eliminarProducto'])->name('carrito.eliminarProducto');
-Route::get('/carrito-actualizar/${idProducto}/{idUser}', [CarritoController::class, 'actualizarCarrito'])->name('carrito.actualizar');
-Route::get('/comprobar-producto/{id}/{idUser}', [CarritoController::class, 'comprobarProducto'])->name('carrito.comprobarProducto');
-Route::post('/sumar-cantidad-producto/{id}/{idUser}/{cantidad}', [CarritoController::class, 'sumarCantidadProducto'])->name('carrito.sumarCantidadProducto');
+Route::get('carrito-actualizar/{idProducto}/{idUser}', [CarritoController::class, 'actualizarCarrito'])->name('carrito.actualizar');
+Route::get('comprobar-producto/{id}/{idUser}', [CarritoController::class, 'comprobarProducto'])->name('carrito.comprobarProducto');
+Route::post('sumar-cantidad-producto/{id}/{idUser}/{cantidad}', [CarritoController::class, 'sumarCantidadProducto'])->name('carrito.sumarCantidadProducto');
 
 
 // routes/web.php
 Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');
 Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('register',[AuthController::class,'showRegistrationForm'])->name('showRegister');
-Route::get('registerPost', [AuthController::class, 'register'])->name('register');
+Route::post('registerPost', [AuthController::class, 'register'])->name('register');
 
 /*Route::middleware('auth')->group(function () {
 

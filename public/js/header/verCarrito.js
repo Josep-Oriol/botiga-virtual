@@ -1,6 +1,11 @@
 import { asset } from "../admin/panelAdmin.js";
 import { usuarioAutenticado } from "../utils/auth.js";
-import { agregarCarrito, obtenerCarrito } from "../utils/carrito.js";
+import {
+    agregarCarrito,
+    obtenerCarrito,
+    eliminarCarrito,
+} from "../utils/carrito.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("verCarrito");
 
@@ -74,14 +79,15 @@ function agregarAlCarrito(buttonProducto) {
 }
 
 async function mostrarCarrito(carritoProductos) {
+    let carrito;
     if (usuarioAutenticado()) {
-        let carrito = await obtenerCarrito();
+        carrito = await obtenerCarrito();
         console.log("carrito", carrito);
     } else {
-        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     }
 
-    if (carrito.length === 0) {
+    if (carrito.length === 0 || carrito.length === null) {
         carritoProductos.innerHTML = `
             <div class="flex flex-col items-center justify-center py-12 text-gray-400">
                 <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +97,6 @@ async function mostrarCarrito(carritoProductos) {
                 <a href="/ver-productos" class="mt-4 text-primary hover:underline">Continuar comprando</a>
             </div>
         `;
-        return;
     }
 
     carritoProductos.innerHTML = "";
@@ -178,12 +183,22 @@ function actualizarCantidad(id, cambio) {
     }
 }
 
-function vaciarCarrito() {
+async function vaciarCarrito() {
     localStorage.removeItem("carrito");
+    if (usuarioAutenticado()) {
+        await eliminarCarrito();
+        console.log("vaciado en database");
+    }
 }
 
-function actualizarContadores() {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+async function actualizarContadores() {
+    let carrito;
+    if (usuarioAutenticado()) {
+        carrito = await obtenerCarrito();
+        console.log("carrito", carrito);
+    } else {
+        carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    }
     const totalProductos = document.getElementById("totalProductos");
     const totalPrecio = document.getElementById("totalPrecio");
 

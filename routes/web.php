@@ -35,6 +35,8 @@ Route::get('productos-destacados', [ProductoController::class, 'productosDestaca
 Route::get('categorias-destacadas', [CategoriaController::class, 'categoriasDestacadas'])->name('categoriasDestacadas');
 Route::get('categorias-mas-vendidas', [CategoriaController::class, 'categoriasMasVendidas'])->name('categoriasMasVendidas');
 
+Route::get('montar-ordenador', [ProductoController::class, 'montarOrdenador'])->name('montarOrdenador');
+
 Route::get('productos-buscar', [BuscadorController::class, 'buscarProducto'])->name('productos.buscar');
 Route::get('ver-producto/{id}', [ProductoController::class, 'verProducto'])->name('verProducto');
 Route::get('ver-productos', [ProductoController::class, 'verProductos'])->name('verProductos');

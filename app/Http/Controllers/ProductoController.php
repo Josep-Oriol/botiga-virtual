@@ -29,6 +29,10 @@ class ProductoController extends Controller
         return view('main', compact('productosDestacados', 'categoriasDestacadas'));
     }
 
+    public function montarOrdenador(){
+        return view('clients/montarOrderador');
+    }
+
     public function comprobarStock($id, $cantidad){
         
         $producto = Producto::find($id);

@@ -8,10 +8,10 @@
     @endif
     <section class="relative bg-gradient-to-r from-custom-dark3 to-custom-dark2 py-12 md:py-20 bg-cover bg-center">
         <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 container mx-auto px-4 md:px-6 lg:px-20 text-center md:text-left">  
+        <a href="{{ route('montarOrdenador') }}" class="relative z-10 container mx-auto px-4 md:px-6 lg:px-20 text-center md:text-left">  
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Construye el ordenador de tus sueños</h2>
             <a href="" class="inline-block bg-primary px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold hover:bg-blue-600">Montar PC</a>
-        </div>
+        </a>
     </section>
 
     <section class="py-6 md:py-8">

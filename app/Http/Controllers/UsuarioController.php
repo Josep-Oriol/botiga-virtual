@@ -10,6 +10,11 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function mostrarMiPerfil(){
+        return view('clients/miPerfil');
+    }
+    
     public function mostrarEstadisticasUsuario(){
         $totales = User::count();
         $usuariosActivos = User::where('activo_usuario', true)->count();

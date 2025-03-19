@@ -7,7 +7,7 @@
     <div class="flex flex-col md:flex-row justify-between gap-6 md:gap-8">
         <!-- Product Image -->
         <div class="w-full md:w-1/2 space-y-6">
-            <img src="{{ asset($producto->foto_portada_producto) }}" 
+            <img src="{{ asset('storage/' . $producto->foto_portada_producto) }}" 
                  alt="{{ $producto->nombre_producto }}" 
                  class="rounded-lg shadow-lg w-full object-cover max-h-[400px]">
         </div>

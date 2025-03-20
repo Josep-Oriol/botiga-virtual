@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\User;
+use App\Models\Direccion;
+use Illuminate\Support\Facades\Auth;
 class UsuarioController extends Controller
 {
     /**
@@ -12,7 +14,9 @@ class UsuarioController extends Controller
      */
 
     public function mostrarMiPerfil(){
-        return view('clients/miPerfil');
+        $usuario = User::find(Auth::id());
+        $direcciones = Direccion::where('fk_id_usuario', Auth::id())->get();
+        return view('clients/miPerfil', compact('usuario', 'direcciones'));
     }
     
     public function mostrarEstadisticasUsuario(){

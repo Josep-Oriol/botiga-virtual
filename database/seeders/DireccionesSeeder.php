@@ -35,6 +35,17 @@ class DireccionesSeeder extends Seeder
                 'pais' => 'España',
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [   
+                'fk_id_usuario' => 2,
+                'nombre_direccion' => 'Comida',
+                'direccion' => 'Calle a Comida',
+                'codigoPostal' => '67843',
+                'ciudad' => 'Tarragona',
+                'provincia' => 'Tarragona',
+                'pais' => 'España',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

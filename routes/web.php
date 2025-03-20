@@ -21,7 +21,8 @@ Route::resources([
     "usuarios" => UsuarioController::class,
     "compras" => CompraController::class,
     "estadisticas" => EstadisticaController::class,
-    "carrito" => CarritoController::class
+    "carrito" => CarritoController::class,
+    "direcciones" => DireccionController::class
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
@@ -56,12 +57,12 @@ Route::post('sumar-cantidad-producto/{id}/{idUser}/{cantidad}', [CarritoControll
 
 
 // routes/web.php
-Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');
 Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('register',[AuthController::class,'showRegistrationForm'])->name('showRegister');
 Route::post('registerPost', [AuthController::class, 'register'])->name('register');
 
-/*Route::middleware('auth')->group(function () {
-
-});*/
+Route::middleware('auth')->group(function () {
+    Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
+});

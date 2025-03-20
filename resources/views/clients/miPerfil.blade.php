@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mi Perfil - ' . '{{Auth::user()->nombre_usuario}}')
+@section('title', 'Mi Perfil - ' . Auth::user()->nombre_usuario)
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
@@ -149,7 +149,49 @@
                 </div>
                 
                 <div class="text-center py-6">
-                    <p class="text-gray-400">Pedidos recientes</p>
+                    @if($pedidos->isNotEmpty())
+                        <table class="min-w-full bg-custom-dark2/60 rounded-lg overflow-hidden shadow-sm">
+                            <thead class="bg-custom-dark2">
+                                <tr>
+                                    <th class="px-6 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider text-center">ID</th>
+                                    <th class="px-6 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider text-center">Fecha</th>
+                                    <th class="px-6 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider text-center">Total</th>
+                                    <th class="px-6 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider text-center">Estado</th>
+                                    <th class="px-6 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700">
+                                @foreach($pedidos as $pedido)
+                                    <tr class="hover:bg-custom-dark2/60 transition-colors">
+                                        <td class="px-6 py-4 text-sm text-gray-500 text-center">{{ $pedido->id }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 text-center">{{ $pedido->created_at->format('d/m/Y H:i') }}</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 text-center">{{ $pedido->total_compra }}€</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 text-center">
+                                            @if ($pedido->estado_compra == 'Completado')
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Completado</span>
+                                            @elseif($pedido->estado_compra == 'Pendiente')
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span>
+                                            @else
+                                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Cancelado</span>
+                                            @endif
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-center">
+                                            <div class="inline-flex items-center gap-4">
+                                                <a href="{{ route('compras.show', $pedido->id) }}" class="text-gray-400 hover:text-primary">Ver</a>
+                                                <a href="#" class="text-gray-400 hover:text-primary inline-flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1zm0 4a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1zm0 4a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <p class="text-gray-400">No tienes pedidos recientes</p>
+                    @endif
                 </div>
             </div>
         </div>

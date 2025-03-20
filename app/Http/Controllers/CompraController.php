@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Compra;
+use App\Models\DetalleCompra;
 
 class CompraController extends Controller
 {
@@ -43,9 +44,11 @@ class CompraController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
-    }
+{
+    $compra = Compra::find($id);
+    $productos = DetalleCompra::where('fk_id_compra', $id)->get();
+    return view('clients/compras/verCompra', compact('compra', 'productos'));
+}
 
     /**
      * Show the form for editing the specified resource.

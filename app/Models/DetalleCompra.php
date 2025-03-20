@@ -14,6 +14,7 @@ class DetalleCompra extends Model
     protected $fillable = [
         'fk_id_compra',
         'fk_id_producto',
+        'fk_id_usuario',
         'cantidad_producto_detalles',
         'precio_producto_detalles',
         'subtotal'
@@ -27,5 +28,10 @@ class DetalleCompra extends Model
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'fk_id_producto');
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'fk_id_usuario');
     }
 }

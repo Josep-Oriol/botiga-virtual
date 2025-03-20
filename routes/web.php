@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\BuscadorController;
 use App\Http\Controllers\CarritoController;
@@ -22,7 +23,7 @@ Route::resources([
     "compras" => CompraController::class,
     "estadisticas" => EstadisticaController::class,
     "carrito" => CarritoController::class,
-    "direcciones" => DireccionController::class
+    "direcciones" => DireccionesController::class
 ]);
 
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');

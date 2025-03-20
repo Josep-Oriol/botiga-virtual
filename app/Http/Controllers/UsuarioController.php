@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
 use App\Models\User;
 use App\Models\Direccion;
+use App\Models\Compra;
 use Illuminate\Support\Facades\Auth;
 class UsuarioController extends Controller
 {
@@ -14,9 +14,10 @@ class UsuarioController extends Controller
      */
 
     public function mostrarMiPerfil(){
+        $pedidos = Compra::where('fk_id_usuario', Auth::id())->get();
         $usuario = User::find(Auth::id());
         $direcciones = Direccion::where('fk_id_usuario', Auth::id())->get();
-        return view('clients/miPerfil', compact('usuario', 'direcciones'));
+        return view('clients/miPerfil', compact('usuario', 'direcciones', 'pedidos'));
     }
     
     public function mostrarEstadisticasUsuario(){

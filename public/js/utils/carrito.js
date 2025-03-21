@@ -110,3 +110,9 @@ export async function sumarCantidadProducto(idProducto, cantidad) {
     );
     return await response.json();
 }
+
+export async function obtenerProducto(id) {
+    const response = await fetch(`/obtener-producto/${id}`);
+    const data = await response.json();
+    return data;
+}

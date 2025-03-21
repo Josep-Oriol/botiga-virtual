@@ -29,6 +29,11 @@ class ProductoController extends Controller
         return view('main', compact('productosDestacados', 'categoriasDestacadas'));
     }
 
+    public function obtenerProducto($id){
+        $producto = Producto::find($id);
+        return response()->json($producto);
+    }
+
     public function montarOrdenador(){
         return view('clients/montarOrderador');
     }

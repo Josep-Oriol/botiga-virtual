@@ -12,8 +12,6 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('carrito/{idUser}', [CarritoController::class, 'obtenerCarrito'])->name('carrito.obtener');
-
 Route::get('/', [ProductoController::class, 'main'])->name('main');
 
 Route::resources([
@@ -49,6 +47,7 @@ Route::get('comprobar-stock/{id}/{cantidad}', [ProductoController::class, 'compr
 
 Route::get('/api/categorias/listar', [CategoriaController::class, 'listar']);
 
+Route::get('obtener-carrito/{idUser}', [CarritoController::class, 'obtenerCarrito'])->name('carrito.obtener');
 Route::get('carrito-vaciar/{idUser}', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 Route::post('carrito-agregar', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
 Route::get('carrito-eliminar-producto/{idProducto}/{idUser}', [CarritoController::class, 'eliminarProducto'])->name('carrito.eliminarProducto');

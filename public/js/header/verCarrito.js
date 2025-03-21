@@ -1,4 +1,4 @@
-import { asset } from "../admin/panelAdmin.js";
+/* import { asset } from "../admin/panelAdmin.js";
 import { usuarioAutenticado } from "../utils/auth.js";
 import {
     agregarCarrito,
@@ -236,3 +236,4 @@ function mostrarNotificacion(mensaje, tipo) {
         setTimeout(() => notificacion.remove(), 300);
     }, 2000);
 }
+ */

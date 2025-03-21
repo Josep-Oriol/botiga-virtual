@@ -65,7 +65,7 @@ export async function comprobarProducto(idProducto) {
 
 export async function obtenerCarrito() {
     const idUser = getIdUser();
-    const response = await fetch(`/carrito/${idUser}`);
+    const response = await fetch(`/obtener-carrito/${idUser}`);
 
     const data = await response.json();
 

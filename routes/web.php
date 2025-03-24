@@ -27,6 +27,8 @@ Route::resources([
 Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
 Route::get('mi-perfil', [UsuarioController::class, 'mostrarMiPerfil'])->name('mostrarMiPerfil');
 
+Route::get('juego', [UsuarioController::class, 'juego'])->name('juego');
+
 Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadisticasProducto'])->name('mostrarEstadisticasProducto');
 Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');
 Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');

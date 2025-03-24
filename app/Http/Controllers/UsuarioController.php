@@ -12,6 +12,9 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function juego(){
+        return view('juego/juego');
+    }
 
     public function mostrarMiPerfil(){
         $pedidos = Compra::where('fk_id_usuario', Auth::id())->get();

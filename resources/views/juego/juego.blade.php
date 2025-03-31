@@ -25,16 +25,16 @@
             <h2 class="text-xl font-semibold mb-4">Juego</h2>
             <!-- Drop piezas del ordenador -->
             <div id="div-drop-piezas" class="w-full h-64 bg-gray-700 rounded-lg flex items-center justify-around mb-4">
-                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded flex justify-center" id="drop-cpu"></div>
-                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded" id="drop-gpu"></div>
-                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded" id="drop-ram"></div>
+                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded flex justify-center items-center" id="drop-cpu">CPU</div>
+                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded flex justify-center items-center" id="drop-gpu">GPU</div>
+                <div class="dropzone w-20 h-20 border-2 border-dashed border-white rounded flex justify-center items-center" id="drop-ram">RAM</div>
             </div>
 
             <!-- Componentes para Arrastrar -->
             <div class="flex gap-4 mt-4 contenedor-piezas">
-                <img src="{{ asset('images/cpu.png') }}" alt="CPU" class="pieza w-16 h-16 cursor-move" id="pieza-cpu" data-match="drop-cpu" draggable="true">
-                <img src="{{ asset('images/gpu.png') }}" alt="GPU" class="pieza w-16 h-16 cursor-move" id="pieza-gpu" data-match="drop-gpu" draggable="true">
-                <img src="{{ asset('images/ram.png') }}" alt="RAM" class="pieza w-16 h-16 cursor-move" id="pieza-ram" data-match="drop-ram" draggable="true">
+                <img src="{{ asset('storage/juego/cpu.png') }}" alt="CPU" class="pieza w-16 h-16 cursor-move" id="pieza-cpu" data-match="drop-cpu" draggable="true">
+                <img src="{{ asset('storage/juego/gpu.png') }}" alt="GPU" class="pieza w-16 h-16 cursor-move" id="pieza-gpu" data-match="drop-gpu" draggable="true">
+                <img src="{{ asset('storage/juego/ram.png') }}" alt="RAM" class="pieza w-16 h-16 cursor-move" id="pieza-ram" data-match="drop-ram" draggable="true">
             </div>
 
 

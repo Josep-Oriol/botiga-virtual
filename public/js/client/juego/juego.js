@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         zona.addEventListener("drop", (e) => {
             e.preventDefault();
+            zona.textContent = "";
             const piezaId = e.dataTransfer.getData("text/plain");
             const pieza = document.getElementById(piezaId);
 

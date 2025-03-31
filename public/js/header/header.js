@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuBtn) {
         menuBtn.addEventListener("click", function () {
-            const menuMobileBtn = document.getElementById("mobile-menu");
-            if (menuMobileBtn) {
-                menuMobileBtn.classList.toggle("hidden");
+            const menuMobile = document.getElementById("mobile-menu");
+            if (menuMobile) {
+                const isHidden = menuMobile.classList.toggle("hidden");
+                menuBtn.setAttribute("aria-expanded", !isHidden);
             }
         });
     }

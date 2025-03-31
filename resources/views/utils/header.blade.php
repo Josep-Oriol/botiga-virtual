@@ -44,7 +44,7 @@
             </div>
 
             <!-- Right side with cart and account -->
-            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 md:w-1/4 justify-end">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 md:w-1/4 justify-end" aria-label="Ver el carrito">
                 <a href="{{ route('carrito.index') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
                     <svg class="w-6 h-6 text-gray-300 fill-none stroke-current stroke-2 group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M3 3h2l3 10h10l3-7H6" stroke-linecap="round" stroke-linejoin="round"/>

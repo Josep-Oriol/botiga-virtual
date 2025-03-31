@@ -35,7 +35,7 @@ class ProductoController extends Controller
     }
 
     public function montarOrdenador(){
-        return view('clients/montarOrderador');
+        return view('clients/montarOrdenador');
     }
 
     public function comprobarStock($id, $cantidad){

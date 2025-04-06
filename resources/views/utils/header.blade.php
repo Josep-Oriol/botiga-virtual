@@ -37,7 +37,6 @@
                      alt="Buscar" 
                      class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 opacity-50">
                      
-                <!-- Search results positioned directly below the search input -->
                 <div id="resultadosBusqueda" 
                      class="absolute left-0 right-0 w-full bg-custom-dark2/95 backdrop-blur-md rounded-b-xl shadow-xl border border-gray-700/50 border-t-0 overflow-hidden z-50 hidden max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent top-full mt-1">
                 </div>
@@ -62,7 +61,7 @@
                         <span class="font-medium">Mi cuenta</span>
                     </a>
                 @else
-                    <a href="{{ route('showLogin') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
+                    <a href="{{ route('login') }}" class="flex items-center space-x-3 hover:text-white group transition-all duration-200 hover:scale-105 p-2">
                         <svg class="w-6 h-6 text-gray-300 fill-current group-hover:text-primary transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 3.134-7 7h14c0-3.866-3.134-7-7-7z"/>
                         </svg>

@@ -24,16 +24,7 @@ Route::resources([
     "direcciones" => DireccionesController::class
 ]);
 
-Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
-Route::get('mi-perfil', [UsuarioController::class, 'mostrarMiPerfil'])->name('mostrarMiPerfil');
-
-Route::get('juego', [UsuarioController::class, 'juego'])->name('juego');
-
-Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadisticasProducto'])->name('mostrarEstadisticasProducto');
-Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');
-Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');
-Route::get('pedidos-estadisticas', [CompraController::class, 'mostrarEstadisticasCompra'])->name('mostrarEstadisticasCompra');
-Route::get('estadisticas', [EstadisticaController::class, 'mostrarEstadisticas'])->name('mostrarEstadisticas');
+//Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
 
 Route::get('productos-destacados', [ProductoController::class, 'productosDestacados'])->name('productosDestacados');
 
@@ -60,12 +51,23 @@ Route::post('sumar-cantidad-producto/{id}/{idUser}/{cantidad}', [CarritoControll
 
 
 // routes/web.php
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::get('loginForm',[AuthController::class, 'showLoginForm'])->name('showLogin');
+Route::post('loginPost', [AuthController::class, 'login'])->name('loginPost');
+Route::get('login',[AuthController::class, 'showLoginForm'])->name('login');
 Route::get('logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('register',[AuthController::class,'showRegistrationForm'])->name('showRegister');
 Route::post('registerPost', [AuthController::class, 'register'])->name('register');
 
 Route::middleware('auth')->group(function () {
     Route::get('panel-admin', [UsuarioController::class, 'mostrarPanelAdmin'])->name('mostrarPanelAdmin');
+
+
+    Route::get('productos-estadisticas', [ProductoController::class, 'mostrarEstadisticasProducto'])->name('mostrarEstadisticasProducto');
+    Route::get('categorias-estadisticas', [CategoriaController::class, 'mostrarEstadisticasCategoria'])->name('mostrarEstadisticasCategoria');
+    Route::get('usuarios-estadisticas', [UsuarioController::class, 'mostrarEstadisticasUsuario'])->name('mostrarEstadisticasUsuario');
+    Route::get('pedidos-estadisticas', [CompraController::class, 'mostrarEstadisticasCompra'])->name('mostrarEstadisticasCompra');
+    Route::get('estadisticas', [EstadisticaController::class, 'mostrarEstadisticas'])->name('mostrarEstadisticas');
+
+    Route::get('mi-perfil', [UsuarioController::class, 'mostrarMiPerfil'])->name('mostrarMiPerfil');
+
+    Route::get('juego', [UsuarioController::class, 'juego'])->name('juego');
 });

@@ -8,7 +8,7 @@
         <img src="{{asset('logos/logo_grande.webp')}}" alt="">
     </a>
   <div class="bg-custom-dark3 rounded-lg w-full max-w-md p-6 shadow-lg">
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('loginPost') }}">
         @csrf
         <div class="mb-4">
             <label for="email" class="block text-white text-sm mb-2">Usuario</label>

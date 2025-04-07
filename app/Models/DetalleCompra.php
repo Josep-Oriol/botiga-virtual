@@ -17,7 +17,7 @@ class DetalleCompra extends Model
         'fk_id_usuario',
         'cantidad_producto_detalles',
         'precio_producto_detalles',
-        'subtotal'
+        'subtotal_detalles'
     ];
 
     public function compra()

@@ -18,13 +18,15 @@
                 <p class="text-gray-400 font-bold text-sm md:text-base">
                     Total Precio: <span class="text-primary" id="totalPrecio"></span>
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex flex-col sm:flex-col gap-3">
                     <button class="flex-1 bg-custom-dark3 text-primary p-2 md:p-3 rounded-md hover:bg-custom-dark3/80 transition-all duration-300 text-sm md:text-base" id="vaciar-carrito">
                         Vaciar carrito
                     </button>
-                    <button class="flex-1 bg-primary text-custom-dark3 p-2 md:p-3 rounded-md hover:bg-primary/80 transition-all duration-300 text-sm md:text-base" id="comprar-carrito">
-                        Comprar
-                    </button>
+                    <a href="{{ route('formulario')}}" class="w-full">
+                        <button class="flex-1 bg-primary text-custom-dark3 p-2 w-full md:p-3 rounded-md hover:bg-primary/80 transition-all duration-300 text-sm md:text-base" id="comprar-carrito">
+                            Comprar
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\BuscadorController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,4 +71,10 @@ Route::middleware('auth')->group(function () {
     Route::get('mi-perfil', [UsuarioController::class, 'mostrarMiPerfil'])->name('mostrarMiPerfil');
 
     Route::get('juego', [UsuarioController::class, 'juego'])->name('juego');
+
+    Route::get('confirmar-compra', [CompraController::class, 'formularioCompra'])->name('formulario');
+    Route::post('realizar-compra', [CompraController::class, 'procesar'])->name('processarCompra');
+    Route::get('/compra-completada', [CompraController::class, 'completada'])->name('compraCompletada');
+
+    Route::get('/factura/{id}', [FacturaController::class, 'generar'])->name('factura.pdf');
 });

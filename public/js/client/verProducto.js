@@ -44,10 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     agregarBtn.addEventListener("click", async function () {
-        console.log("entra antes");
         const cantidad = parseInt(cantidadCarritoValor.textContent);
         const stock = await comprobarStock(producto.id, cantidad);
-        console.log("entra des");
 
         if (stock) {
             if (usuarioAutenticado()) {
@@ -61,17 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 const carrito =
                     JSON.parse(localStorage.getItem("carrito")) || [];
-                if (producto.foto_portada_producto) {
-                    producto.imagen = `/storage/${producto.foto_portada_producto}`;
-                }
 
                 const productoExistente = carrito.find(
                     (item) => item.id === producto.id
                 );
+
                 if (productoExistente) {
-                    productoExistente.cantidad++;
+                    productoExistente.cantidad += cantidad;
                 } else {
-                    carrito.push(producto);
+                    carrito.push({
+                        id: producto.id,
+                        cantidad: cantidad,
+                    });
                 }
 
                 localStorage.setItem("carrito", JSON.stringify(carrito));

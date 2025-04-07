@@ -2,14 +2,12 @@
 
 @section('content')
     <div class="flex flex-col lg:flex-row justify-between gap-4 p-4 md:p-8">
-        <!-- Cart Products Section -->
         <div class="w-full lg:w-2/3 flex flex-col gap-4">
             <h1 class="text-xl md:text-2xl font-bold">Carrito</h1>
             <hr>
             <div id="carritoProductos" class="flex flex-col gap-4"></div>
         </div>
 
-        <!-- Cart Summary Section -->
         <div class="w-full lg:w-1/3 flex flex-col gap-4 mt-6 lg:mt-0">
             <h1 class="text-xl md:text-2xl font-bold">Contenido del carrito <span id="carritoTotal"></span></h1>
             <hr>

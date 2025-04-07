@@ -76,3 +76,7 @@
 <script type="module" src="{{ asset('js/header/header.js') }}"></script>
 <script type="module" src="{{ asset('js/header/buscador.js') }}"></script>
 <script type="module" src="{{ asset('js/header/verCarrito.js') }}"></script>
+@if(Auth::check()) {
+    <script type="module" src="{{ asset('js/header/sincronizarCarrito.js')}}"></script>
+}
+@endif

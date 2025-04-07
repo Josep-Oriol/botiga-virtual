@@ -155,7 +155,9 @@ function cartaProducto(divCarrito, div, dato, producto) {
         "divProductoCarrito bg-custom-dark3 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] mb-4 last:mb-0";
 
     div.innerHTML = `
-        <div class="flex flex-col sm:flex-row gap-6 p-4" id="productoDiv-${producto.id}">
+        <div class="flex flex-col sm:flex-row gap-6 p-4" id="productoDiv-${
+            producto.id
+        }">
             <div class="sm:w-1/4 flex-shrink-0">
                 <img src="${rutaImagen}" 
                     alt="${producto.nombre_producto}" 
@@ -163,22 +165,40 @@ function cartaProducto(divCarrito, div, dato, producto) {
             </div>
             <div class="sm:w-1/2 flex flex-col justify-between flex-grow">
                 <div>
-                    <h3 class="text-lg font-bold text-white mb-2">${producto.nombre_producto}</h3>
-                    <p class="text-sm text-gray-400 line-clamp-2">${producto.descripcion_producto}</p>
+                    <h3 class="text-lg font-bold text-white mb-2">${
+                        producto.nombre_producto
+                    }</h3>
+                    <p class="text-sm text-gray-400 line-clamp-2">${
+                        producto.descripcion_producto
+                    }</p>
                 </div>
-                <p class="text-primary font-bold text-xl">${producto.precio_producto}€</p>
+                <p class="text-primary font-bold text-xl">Precio por unidad:${
+                    producto.precio_producto
+                }€</p>
+                <p id="cantidad-${producto.id}" 
+                    class="text-primary font-bold text-xl">Precio total del producto: ${
+                        producto.precio_producto * dato.cantidad
+                    }</p>
             </div>
             <div class="sm:w-1/4 flex flex-col justify-between gap-4 flex-shrink-0">
-                <button class="eliminar text-red-500 hover:text-red-400 transition-colors flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-red-500/10" value="${producto.id}">
+                <button class="eliminar text-red-500 hover:text-red-400 transition-colors flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-red-500/10" value="${
+                    producto.id
+                }">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                     </svg>
                     Eliminar
                 </button>
                 <div class="flex items-center justify-center gap-3 bg-custom-dark2/50 p-2 rounded-lg">
-                    <button class="restar w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 rounded-lg transition-all" data-producto-id="${producto.id}">-</button>
-                    <span class="cantidad text-lg font-bold text-white">${dato.cantidad}</span>
-                    <button class="sumar w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 rounded-lg transition-all" data-producto-id="${producto.id}">+</button>
+                    <button class="restar w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 rounded-lg transition-all" data-producto-id="${
+                        producto.id
+                    }">-</button>
+                    <span class="cantidad text-lg font-bold text-white">${
+                        dato.cantidad
+                    }</span>
+                    <button class="sumar w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 rounded-lg transition-all" data-producto-id="${
+                        producto.id
+                    }">+</button>
                 </div>
             </div>
         </div>`;

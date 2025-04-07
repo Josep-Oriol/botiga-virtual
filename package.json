@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.4",
-        "chart.js": "^4.4.8"
+        "chart.js": "^4.4.8",
+        "tailwindcss-scrollbar": "^0.1.0"
     }
 }

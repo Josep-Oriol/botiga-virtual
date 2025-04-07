@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Usuario;
 use App\Models\Direccion;
 use App\Models\Compra;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,10 @@ class UsuarioController extends Controller
      */
     public function juego(){
         return view('juego/juego');
+    }
+
+    public function obtenerUsuario($id){
+        return response()->json(Usuario::find($id));
     }
 
     public function mostrarMiPerfil(){

@@ -49,6 +49,7 @@ Route::delete('carrito-eliminar-producto/{idProducto}/{idUser}', [CarritoControl
 Route::get('carrito-actualizar/{idProducto}/{idUser}', [CarritoController::class, 'actualizarCarrito'])->name('carrito.actualizar');
 Route::get('comprobar-producto/{id}/{idUser}', [CarritoController::class, 'comprobarProducto'])->name('carrito.comprobarProducto');
 Route::post('sumar-cantidad-producto/{id}/{idUser}/{cantidad}', [CarritoController::class, 'sumarCantidadProducto'])->name('carrito.sumarCantidadProducto');
+Route::get('obtener-usuario/{id}', [UsuarioController::class, 'obtenerUsuario'])->name('obtenerUsuario');
 
 
 // routes/web.php

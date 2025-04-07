@@ -1,5 +1,7 @@
 import { asset } from "../admin/panelAdmin.js";
 
+import { obtenerUsuario } from "../utils/usuarios.js";
+
 export function contenidoPedidos() {
     listarPedidos();
 }
@@ -27,42 +29,32 @@ export async function listarCompras() {
         divDatos.classList.add("flex", "gap-4");
 
         const nombreCompra = document.createElement("h3");
-        nombreCompra.textContent = compra.nombre_compra;
+        const usuario = await obtenerUsuario(compra.fk_id_usuario);
+        nombreCompra.textContent = usuario.nombre_usuario;
 
         const codigoCompra = document.createElement("p");
-        codigoCompra.textContent = compra.codigo_compra;
+        codigoCompra.textContent = compra.fecha_compra;
         codigoCompra.classList.add("text-primary");
+
+        const codigaCompra = document.createElement("p");
+        codigaCompra.textContent = compra.fecha_envio_compra;
+        codigaCompra.classList.add("text-primary");
 
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "gap-2", "pr-4");
-
-        const editarCompra = document.createElement("img");
-        editarCompra.src = asset("icons/admin/edit.svg");
-        editarCompra.classList.add("cursor-pointer");
-        editarCompra.addEventListener("click", () => {
-            window.location.href = `/compras/${compra.id}/edit`;
-        });
 
         const verCompra = document.createElement("img");
         verCompra.src = asset("icons/admin/eye.svg");
         verCompra.classList.add("cursor-pointer");
         verCompra.addEventListener("click", () => {
-            window.location.href = `/compras/${compra.id}`;
-        });
-
-        const confirmarEliminarCompra = document.createElement("img");
-        confirmarEliminarCompra.src = asset("icons/admin/trash.svg");
-        confirmarEliminarCompra.classList.add("cursor-pointer");
-        confirmarEliminarCompra.addEventListener("click", () => {
-            eliminarCompra(compra.id);
+            window.location.href = `/factura/${compra.id}`;
         });
 
         divDatos.appendChild(nombreCompra);
         divDatos.appendChild(codigoCompra);
+        divDatos.appendChild(codigaCompra);
 
-        divIcons.appendChild(editarCompra);
         divIcons.appendChild(verCompra);
-        divIcons.appendChild(confirmarEliminarCompra);
 
         compraDiv.appendChild(divDatos);
         compraDiv.appendChild(divIcons);

@@ -122,3 +122,9 @@ async function eliminarUsuario(id) {
         alert("Error: " + (result.message || "No se pudo eliminar el usuario"));
     }
 }
+
+export async function obtenerUsuario(id) {
+    const usuario = await fetch(`/obtener-usuario/${id}`);
+    const data = await usuario.json();
+    return data;
+}

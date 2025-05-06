@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Producto;
-
 
 class ProductosSeeder extends Seeder
 {
@@ -16,13 +13,13 @@ class ProductosSeeder extends Seeder
     public function run(): void
     {
         DB::table('productos')->insert([
-            [   
+            [
                 'foto_portada_producto' => 'fotos/productos/cpu1.jpg',
                 'nombre_producto' => 'Intel Core i9-13900K',
                 'descripcion_producto' => 'Procesador de 24 núcleos y 32 hilos con frecuencia turbo de hasta 5.8 GHz.',
                 'codigo_producto' => 'CPU001',
-                'fk_id_categoria' => 1, // Procesadores
-                'fk_id_marca' => 1, // Intel
+                'fk_id_categoria' => 1,
+                'fk_id_marca' => 1,
                 'precio_producto' => 649.99,
                 'stock_producto' => 20,
                 'destacado_producto' => true,
@@ -35,8 +32,8 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'NVIDIA GeForce RTX 4090',
                 'descripcion_producto' => 'Tarjeta gráfica de última generación con 24 GB de memoria GDDR6X.',
                 'codigo_producto' => 'GPU002',
-                'fk_id_categoria' => 2, // Tarjetas Gráficas
-                'fk_id_marca' => 3, // NVIDIA
+                'fk_id_categoria' => 2,
+                'fk_id_marca' => 3,
                 'precio_producto' => 1599.99,
                 'stock_producto' => 10,
                 'destacado_producto' => true,
@@ -49,8 +46,8 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'Corsair Vengeance LPX 32GB (2x16GB) DDR4',
                 'descripcion_producto' => 'Kit de memoria RAM DDR4 de alto rendimiento con velocidad de 3200 MHz.',
                 'codigo_producto' => 'RAM003',
-                'fk_id_categoria' => null, // Memorias RAM
-                'fk_id_marca' => null, // Corsair
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
                 'precio_producto' => 149.99,
                 'stock_producto' => 50,
                 'destacado_producto' => false,
@@ -63,8 +60,8 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'Samsung 970 EVO Plus 1TB NVMe M.2',
                 'descripcion_producto' => 'Unidad de estado sólido NVMe M.2 con velocidades de lectura de hasta 3500 MB/s.',
                 'codigo_producto' => 'SSD004',
-                'fk_id_categoria' => null, // Almacenamiento SSD
-                'fk_id_marca' => null, // Samsung
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
                 'precio_producto' => 129.99,
                 'stock_producto' => 30,
                 'destacado_producto' => true,
@@ -77,15 +74,155 @@ class ProductosSeeder extends Seeder
                 'nombre_producto' => 'ASUS ROG Strix Z790-E Gaming WiFi',
                 'descripcion_producto' => 'Placa base ATX compatible con procesadores Intel de 13ª generación.',
                 'codigo_producto' => 'MB005',
-                'fk_id_categoria' => null, // Placas Base
-                'fk_id_marca' => null, // ASUS
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
                 'precio_producto' => 499.99,
                 'stock_producto' => 15,
                 'destacado_producto' => false,
                 'activo_producto' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/cpu2.jpg',
+                'nombre_producto' => 'AMD Ryzen 9 7950X',
+                'descripcion_producto' => 'Procesador de 16 núcleos y 32 hilos con arquitectura Zen 4 y frecuencia de hasta 5.7 GHz.',
+                'codigo_producto' => 'CPU006',
+                'fk_id_categoria' => 1,
+                'fk_id_marca' => 2,
+                'precio_producto' => 699.99,
+                'stock_producto' => 18,
+                'destacado_producto' => true,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/gpu2.jpg',
+                'nombre_producto' => 'AMD Radeon RX 7900 XTX',
+                'descripcion_producto' => 'Tarjeta gráfica de alto rendimiento con 24 GB GDDR6, ideal para gaming en 4K.',
+                'codigo_producto' => 'GPU007',
+                'fk_id_categoria' => 2,
+                'fk_id_marca' => 2,
+                'precio_producto' => 999.99,
+                'stock_producto' => 12,
+                'destacado_producto' => true,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/ram2.jpg',
+                'nombre_producto' => 'G.Skill Trident Z RGB 32GB (2x16GB) DDR5',
+                'descripcion_producto' => 'Kit de memoria DDR5 con iluminación RGB y velocidad de 6000 MHz.',
+                'codigo_producto' => 'RAM008',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 199.99,
+                'stock_producto' => 40,
+                'destacado_producto' => true,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/ssd2.jpg',
+                'nombre_producto' => 'WD Black SN850X 2TB NVMe',
+                'descripcion_producto' => 'SSD de alto rendimiento con interfaz PCIe Gen4 y hasta 7300 MB/s de lectura.',
+                'codigo_producto' => 'SSD009',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 249.99,
+                'stock_producto' => 25,
+                'destacado_producto' => false,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/mb2.jpg',
+                'nombre_producto' => 'MSI MAG B650 Tomahawk WiFi',
+                'descripcion_producto' => 'Placa base AM5 para procesadores Ryzen con soporte DDR5 y WiFi 6.',
+                'codigo_producto' => 'MB010',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 229.99,
+                'stock_producto' => 20,
+                'destacado_producto' => false,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/cooler1.jpg',
+                'nombre_producto' => 'Noctua NH-D15',
+                'descripcion_producto' => 'Disipador de aire premium con doble ventilador para alto rendimiento térmico.',
+                'codigo_producto' => 'COOL011',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 99.99,
+                'stock_producto' => 35,
+                'destacado_producto' => true,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/psu1.jpg',
+                'nombre_producto' => 'Corsair RM850x 850W 80+ Gold',
+                'descripcion_producto' => 'Fuente de poder modular de alta eficiencia, ideal para PC de alto rendimiento.',
+                'codigo_producto' => 'PSU012',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 139.99,
+                'stock_producto' => 28,
+                'destacado_producto' => false,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/case1.jpg',
+                'nombre_producto' => 'NZXT H510 Flow',
+                'descripcion_producto' => 'Gabinete ATX con excelente flujo de aire y diseño minimalista.',
+                'codigo_producto' => 'CASE013',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 89.99,
+                'stock_producto' => 22,
+                'destacado_producto' => false,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/monitor1.jpg',
+                'nombre_producto' => 'LG UltraGear 27GN950-B 27"',
+                'descripcion_producto' => 'Monitor gaming 4K UHD con 144 Hz y tecnología Nano IPS.',
+                'codigo_producto' => 'MON014',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 799.99,
+                'stock_producto' => 10,
+                'destacado_producto' => true,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'foto_portada_producto' => 'fotos/productos/teclado1.jpg',
+                'nombre_producto' => 'Logitech G Pro X',
+                'descripcion_producto' => 'Teclado mecánico personalizable con switches intercambiables.',
+                'codigo_producto' => 'KB015',
+                'fk_id_categoria' => null,
+                'fk_id_marca' => null,
+                'precio_producto' => 129.99,
+                'stock_producto' => 40,
+                'destacado_producto' => false,
+                'activo_producto' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
